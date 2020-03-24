@@ -1,4 +1,5 @@
 import 'package:finda_a_table/pages/cadastrar.dart';
+import 'package:finda_a_table/pages/recuperar-senha.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -89,12 +90,12 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                   onPressed: () {
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //     builder: (context) => ResetPassword(),
-                    //   ),
-                    // );
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => RecuperarSenha(),
+                      ),
+                    );
                   },
                 ),
               ),
