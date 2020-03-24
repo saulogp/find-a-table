@@ -1,3 +1,4 @@
+import 'package:finda_a_table/pages/apresentation.dart';
 import 'package:flutter/material.dart';
 
 class CadastrarPage extends StatefulWidget {
@@ -140,12 +141,12 @@ class _CadastrarPageState extends State<CadastrarPage> {
                   child: SizedBox.expand(
                     child: FlatButton(
                       onPressed: () {
-                        // Navigator.push(
-                        //   context,
-                        //   MaterialPageRoute(
-                        //     builder: (context) => Home(),
-                        //   ),
-                        // );
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Apresentation(),
+                          ),
+                        );
                       },
                       child: Text(
                         "Juntar-se!!!",
