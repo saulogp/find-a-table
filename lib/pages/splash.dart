@@ -1,3 +1,4 @@
+import 'package:finda_a_table/pages/login.dart';
 import 'package:flutter/material.dart';
 
 class Splash extends StatefulWidget {
@@ -6,6 +7,17 @@ class Splash extends StatefulWidget {
 }
 
 class _SplashState extends State<Splash> {
+
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(Duration(seconds: 3)).then((_){
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (context)=> LoginPage())
+      );
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
