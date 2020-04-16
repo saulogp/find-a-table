@@ -6,6 +6,7 @@ class RecuperarSenha extends StatefulWidget {
 }
 
 class _RecuperarSenhaState extends State<RecuperarSenha> {
+  TextEditingController _emailController = new TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,6 +41,7 @@ class _RecuperarSenhaState extends State<RecuperarSenha> {
                 )),
             TextFormField(
               keyboardType: TextInputType.emailAddress,
+              controller: _emailController,
               decoration: InputDecoration(
                   hintText: "nicolas@cage.com",
                   labelStyle: TextStyle(
