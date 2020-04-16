@@ -7,6 +7,12 @@ class CadastrarPage extends StatefulWidget {
 }
 
 class _CadastrarPageState extends State<CadastrarPage> {
+
+  TextEditingController _userController = new TextEditingController();
+  TextEditingController _emailController = new TextEditingController();
+  TextEditingController _passwordController = new TextEditingController();
+  TextEditingController _confirmPasswordController = new TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,6 +37,7 @@ class _CadastrarPageState extends State<CadastrarPage> {
               ),
               TextFormField(
                 keyboardType: TextInputType.emailAddress,
+                controller: _userController,
                 decoration: InputDecoration(
                     hintText: "Nicolas Cage",
                     labelStyle: TextStyle(
@@ -59,6 +66,7 @@ class _CadastrarPageState extends State<CadastrarPage> {
               ),
               TextFormField(
                 keyboardType: TextInputType.emailAddress,
+                controller: _emailController,
                 decoration: InputDecoration(
                     hintText: "nicolas@cage.com",
                     labelStyle: TextStyle(
@@ -87,6 +95,7 @@ class _CadastrarPageState extends State<CadastrarPage> {
               ),
               TextFormField(
                 keyboardType: TextInputType.emailAddress,
+                controller: _passwordController,
                 obscureText: true,
                 decoration: InputDecoration(
                     hintText: "................",
@@ -116,6 +125,7 @@ class _CadastrarPageState extends State<CadastrarPage> {
               ),
               TextFormField(
                 keyboardType: TextInputType.emailAddress,
+                controller: _confirmPasswordController,
                 obscureText: true,
                 decoration: InputDecoration(
                     hintText: "................",
