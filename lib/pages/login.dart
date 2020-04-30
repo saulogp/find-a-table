@@ -8,6 +8,9 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  
+  TextEditingController _userController = new TextEditingController();
+  TextEditingController _passwordController = new TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,6 +35,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
               TextFormField(
                 keyboardType: TextInputType.emailAddress,
+                controller: _userController,
                 decoration: InputDecoration(
                     hintText: "Nicolas Cage",
                     labelStyle: TextStyle(
@@ -60,6 +64,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
               TextFormField(
                 keyboardType: TextInputType.emailAddress,
+                controller: _passwordController,
                 obscureText: true,
                 decoration: InputDecoration(
                     hintText: "................",
