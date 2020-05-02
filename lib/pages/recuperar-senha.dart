@@ -63,7 +63,10 @@ class _RecuperarSenhaState extends State<RecuperarSenha> {
             Container(
               height: 60,
               alignment: Alignment.center,
-              decoration: BoxDecoration(color: Color(0xFF002B32)),
+              decoration: BoxDecoration(
+                color: Color(0xFF002B32),
+                borderRadius: BorderRadius.circular(5)
+              ),
               child: SizedBox.expand(
                 child: FlatButton(
                   onPressed: () {},
@@ -76,6 +79,7 @@ class _RecuperarSenhaState extends State<RecuperarSenha> {
                     ),
                     textAlign: TextAlign.center,
                   ),
+                  
                 ),
               ),
             ),
