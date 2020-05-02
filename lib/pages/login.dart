@@ -91,7 +91,7 @@ class _LoginPageState extends State<LoginPage> {
                     style: TextStyle(
                       fontSize: 11,
                       color: Color(0xFF002B32),
-                      fontWeight: FontWeight.w300,
+                      fontWeight: FontWeight.w400,
                     ),
                   ),
                   onPressed: () {
@@ -139,7 +139,7 @@ class _LoginPageState extends State<LoginPage> {
                   textAlign: TextAlign.right,
                   style: TextStyle(
                     color: Color(0xFF002B32),
-                    fontWeight: FontWeight.w300,
+                    fontWeight: FontWeight.w400,
                   ),
                 ),
                 onPressed: () {
