@@ -1,3 +1,4 @@
+import 'package:finda_a_table/pages/perfil.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -28,7 +29,14 @@ class Apresentation extends StatelessWidget {
               ),
               child: SizedBox.expand(
                 child: FlatButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Perfil(),
+                      ),
+                    );
+                  },
                   child: Text(
                     "Continuar...",
                     style: TextStyle(

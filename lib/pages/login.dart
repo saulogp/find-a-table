@@ -19,14 +19,6 @@ class _LoginPageState extends State<LoginPage> {
           padding: EdgeInsets.only(top: 30, left: 25, right: 25),
           child: ListView(
             children: <Widget>[
-              // Container(
-              //   width: 180,
-              //   height: 180,
-              //   child: FlareActor(
-              //     "assets/flare/logoanimada.flr",
-              //     animation: "Gif",
-              //   ),
-              // ),
               Image.asset(
                 "assets/images/LogoFaT.png",
                 height: 150,
