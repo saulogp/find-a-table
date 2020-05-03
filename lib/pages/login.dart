@@ -1,7 +1,7 @@
 import 'package:finda_a_table/pages/cadastrar.dart';
 import 'package:finda_a_table/pages/recuperar-senha.dart';
 import 'package:flutter/material.dart';
-import 'package:flare_flutter/flare_actor.dart';
+// import 'package:flare_flutter/flare_actor.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -19,18 +19,18 @@ class _LoginPageState extends State<LoginPage> {
           padding: EdgeInsets.only(top: 30, left: 25, right: 25),
           child: ListView(
             children: <Widget>[
-              Container(
-                width: 180,
-                height: 180,
-                child: FlareActor(
-                  "assets/flare/logoanimada.flr",
-                  animation: "Gif",
-                ),
-              ),
-              // Image.asset(
-              //   "assets/images/LogoFaT.png",
-              //   height: 150,
+              // Container(
+              //   width: 180,
+              //   height: 180,
+              //   child: FlareActor(
+              //     "assets/flare/logoanimada.flr",
+              //     animation: "Gif",
+              //   ),
               // ),
+              Image.asset(
+                "assets/images/LogoFaT.png",
+                height: 150,
+              ),
               Padding(
                 padding: EdgeInsets.only(top: 20, bottom: 10),
                 child: Text(
