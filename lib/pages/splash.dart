@@ -1,5 +1,6 @@
 import 'package:finda_a_table/pages/login.dart';
 import 'package:flutter/material.dart';
+import 'package:flare_flutter/flare_actor.dart';
 
 class Splash extends StatefulWidget {
   @override
@@ -28,10 +29,18 @@ class _SplashState extends State<Splash> {
           children: <Widget>[
             Padding(
               padding: EdgeInsets.only(top: 90),
-              child: Image.asset(
-                "assets/images/logo-nome.png",
+              child: Container(
+                width: 250,
                 height: 250,
+                child: FlareActor(
+                  "assets/flare/logoanimada.flr",
+                  animation: "Gif",
+                ),
               ),
+              // Image.asset(
+              //   "assets/images/logo-nome.png",
+              //   height: 250,
+              // ),
             ),
             Padding(
               padding: EdgeInsets.only(top: 200),

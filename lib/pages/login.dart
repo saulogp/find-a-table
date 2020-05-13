@@ -1,6 +1,7 @@
 import 'package:finda_a_table/pages/cadastrar.dart';
 import 'package:finda_a_table/pages/recuperar-senha.dart';
 import 'package:flutter/material.dart';
+// import 'package:flare_flutter/flare_actor.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -91,7 +92,7 @@ class _LoginPageState extends State<LoginPage> {
                     style: TextStyle(
                       fontSize: 11,
                       color: Color(0xFF002B32),
-                      fontWeight: FontWeight.w300,
+                      fontWeight: FontWeight.w400,
                     ),
                   ),
                   onPressed: () {
@@ -107,7 +108,10 @@ class _LoginPageState extends State<LoginPage> {
               Container(
                 height: 60,
                 alignment: Alignment.center,
-                decoration: BoxDecoration(color: Color(0xFF002B32)),
+                decoration: BoxDecoration(
+                  color: Color(0xFF002B32),
+                  borderRadius: BorderRadius.circular(5),
+                ),
                 child: SizedBox.expand(
                   child: FlatButton(
                     onPressed: () {
@@ -131,27 +135,27 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
               Container(
-              height: 40,
-              alignment: Alignment.center,
-              child: FlatButton(
-                child: Text(
-                  "Não tem conta? Registre-se aqui!",
-                  textAlign: TextAlign.right,
-                  style: TextStyle(
-                    color: Color(0xFF002B32),
-                    fontWeight: FontWeight.w300,
-                  ),
-                ),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => CadastrarPage(),
+                height: 40,
+                alignment: Alignment.center,
+                child: FlatButton(
+                  child: Text(
+                    "Não tem conta? Registre-se aqui!",
+                    textAlign: TextAlign.right,
+                    style: TextStyle(
+                      color: Color(0xFF002B32),
+                      fontWeight: FontWeight.w400,
                     ),
-                  );
-                },
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CadastrarPage(),
+                      ),
+                    );
+                  },
+                ),
               ),
-            ),
             ],
           )),
     );

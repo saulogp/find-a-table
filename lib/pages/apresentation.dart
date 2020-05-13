@@ -1,3 +1,5 @@
+import 'package:finda_a_table/pages/perfil.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Apresentation extends StatelessWidget {
@@ -22,10 +24,19 @@ class Apresentation extends StatelessWidget {
             Container(
               height: 60,
               alignment: Alignment.center,
-              decoration: BoxDecoration(color: Color(0xFF002B32)),
+              decoration: BoxDecoration(color: Color(0xFF002B32),
+                borderRadius: BorderRadius.circular(5),
+              ),
               child: SizedBox.expand(
                 child: FlatButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Perfil(),
+                      ),
+                    );
+                  },
                   child: Text(
                     "Continuar...",
                     style: TextStyle(
