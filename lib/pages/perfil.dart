@@ -1,3 +1,4 @@
+import 'package:finda_a_table/pages/criar-mesa.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 //import 'package:image_picker/image_picker.dart';
@@ -168,7 +169,14 @@ class _PerfilState extends State<Perfil> {
               ),
               child: SizedBox.expand(
                 child: FlatButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CriarMesa(),
+                      ),
+                    );
+                  },
                   child: Text(
                     "Tudo Pronto!",
                     style: TextStyle(
