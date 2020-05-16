@@ -1,4 +1,4 @@
-# finda_a_table
+# find_a_table
 
 A new Flutter project.
 
