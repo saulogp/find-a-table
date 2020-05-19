@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'mesas.dart';
+
 class CriarMesa extends StatefulWidget {
   @override
   _CriarMesaState createState() => _CriarMesaState();
@@ -181,7 +183,14 @@ class _CriarMesaState extends State<CriarMesa> {
                       borderRadius: BorderRadius.circular(5)),
                   child: SizedBox.expand(
                     child: FlatButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Mesas(),
+                          ),
+                        );
+                      },
                       child: Text(
                         "Começar aventura!!!",
                         style: TextStyle(
