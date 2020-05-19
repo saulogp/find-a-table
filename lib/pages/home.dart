@@ -68,7 +68,7 @@ class _HomeState extends State<Home> {
                     ),
                     Text(
                       "Medieval",
-                      style: TextStyle(fontSize: 10),
+                      style: TextStyle(fontSize: 12),
                       textAlign: TextAlign.center,
                     ),
                   ],
@@ -94,7 +94,7 @@ class _HomeState extends State<Home> {
                     ),
                     Text(
                       "Cyberpunk",
-                      style: TextStyle(fontSize: 10),
+                      style: TextStyle(fontSize: 12),
                       textAlign: TextAlign.center,
                     ),
                   ],
@@ -120,7 +120,7 @@ class _HomeState extends State<Home> {
                     ),
                     Text(
                       "Cthulhu",
-                      style: TextStyle(fontSize: 10),
+                      style: TextStyle(fontSize: 12),
                       textAlign: TextAlign.center,
                     ),
                   ],
@@ -146,7 +146,7 @@ class _HomeState extends State<Home> {
                     ),
                     Text(
                       "Terror",
-                      style: TextStyle(fontSize: 10),
+                      style: TextStyle(fontSize: 12),
                       textAlign: TextAlign.center,
                     ),
                   ],
@@ -180,7 +180,7 @@ class _HomeState extends State<Home> {
                     ),
                     Text(
                       "Apocalipse\nzumbi",
-                      style: TextStyle(fontSize: 10),
+                      style: TextStyle(fontSize: 12),
                       textAlign: TextAlign.center,
                     ),
                   ],
@@ -206,7 +206,7 @@ class _HomeState extends State<Home> {
                     ),
                     Text(
                       "Vampiro",
-                      style: TextStyle(fontSize: 10),
+                      style: TextStyle(fontSize: 12),
                       textAlign: TextAlign.center,
                     ),
                   ],
@@ -232,7 +232,7 @@ class _HomeState extends State<Home> {
                     ),
                     Text(
                       "Star Wars",
-                      style: TextStyle(fontSize: 10),
+                      style: TextStyle(fontSize: 12),
                       textAlign: TextAlign.center,
                     ),
                   ],
@@ -258,7 +258,7 @@ class _HomeState extends State<Home> {
                     ),
                     Text(
                       "Investigação",
-                      style: TextStyle(fontSize: 10),
+                      style: TextStyle(fontSize: 12),
                       textAlign: TextAlign.center,
                     ),
                   ],
