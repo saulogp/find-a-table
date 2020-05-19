@@ -1,4 +1,4 @@
-import 'package:finda_a_table/pages/Home.dart';
+import 'package:finda_a_table/pages/home.dart';
 import 'package:finda_a_table/pages/criar-mesa.dart';
 import 'package:finda_a_table/pages/perfil.dart';
 import 'package:flutter/material.dart';
