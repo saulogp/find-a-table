@@ -25,6 +25,7 @@ dependencies:
   cupertino_icons: ^0.1.2
   flare_flutter: ^1.0.2
   image_picker: ^0.6.0+3
+  carousel_pro: ^1.0.0
 
 dev_dependencies:
   flutter_test:
@@ -58,6 +59,9 @@ flutter:
    - assets/images/Terror.png
    - assets/images/Vampi.png
    - assets/images/Zumbi.png
+   - assets/images/mesa1.png
+   - assets/images/mesa2.png
+   - assets/images/mesa3.png
 
   #  - images/a_dot_ham.jpeg
 
