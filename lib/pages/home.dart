@@ -67,7 +67,7 @@ class _HomeState extends State<Home> {
                                 image: new DecorationImage(
                                     fit: BoxFit.fill,
                                     image: AssetImage(
-                                        "assets/images/chululu.png")))),
+                                        "assets/images/Medieval.png")))),
                       ),
                       SizedBox(
                         height: 5,
@@ -95,7 +95,7 @@ class _HomeState extends State<Home> {
                                 image: new DecorationImage(
                                     fit: BoxFit.fill,
                                     image: AssetImage(
-                                        "assets/images/chululu.png")))),
+                                        "assets/images/Cyberpunk.png")))),
                       ),
                       SizedBox(
                         height: 5,
@@ -151,7 +151,7 @@ class _HomeState extends State<Home> {
                                 image: new DecorationImage(
                                     fit: BoxFit.fill,
                                     image: AssetImage(
-                                        "assets/images/chululu.png")))),
+                                        "assets/images/Terror.png")))),
                       ),
                       SizedBox(
                         height: 5,
@@ -187,7 +187,7 @@ class _HomeState extends State<Home> {
                                 image: new DecorationImage(
                                     fit: BoxFit.fill,
                                     image: AssetImage(
-                                        "assets/images/chululu.png")))),
+                                        "assets/images/Zumbi.png")))),
                       ),
                       SizedBox(
                         height: 5,
@@ -215,7 +215,7 @@ class _HomeState extends State<Home> {
                                 image: new DecorationImage(
                                     fit: BoxFit.fill,
                                     image: AssetImage(
-                                        "assets/images/chululu.png")))),
+                                        "assets/images/Vampi.png")))),
                       ),
                       SizedBox(
                         height: 5,
@@ -243,7 +243,7 @@ class _HomeState extends State<Home> {
                                 image: new DecorationImage(
                                     fit: BoxFit.fill,
                                     image: AssetImage(
-                                        "assets/images/chululu.png")))),
+                                        "assets/images/SW.png")))),
                       ),
                       SizedBox(
                         height: 5,
@@ -271,7 +271,7 @@ class _HomeState extends State<Home> {
                                 image: new DecorationImage(
                                     fit: BoxFit.fill,
                                     image: AssetImage(
-                                        "assets/images/chululu.png")))),
+                                        "assets/images/Investigação.png")))),
                       ),
                       SizedBox(
                         height: 5,

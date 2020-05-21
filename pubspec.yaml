@@ -51,6 +51,14 @@ flutter:
    - assets/images/person.png
    - assets/images/chululu.png
    - assets/flare/logoanimada.flr
+   - assets/images/Cyberpunk.png
+   - assets/images/Investigação.png
+   - assets/images/Medieval.png
+   - assets/images/SW.png
+   - assets/images/Terror.png
+   - assets/images/Vampi.png
+   - assets/images/Zumbi.png
+
   #  - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
