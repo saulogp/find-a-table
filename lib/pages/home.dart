@@ -1,5 +1,6 @@
 import 'package:finda_a_table/pages/criar-mesa.dart';
 import 'package:flutter/material.dart';
+import 'package:carousel_pro/carousel_pro.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -242,8 +243,8 @@ class _HomeState extends State<Home> {
                                 shape: BoxShape.circle,
                                 image: new DecorationImage(
                                     fit: BoxFit.fill,
-                                    image: AssetImage(
-                                        "assets/images/SW.png")))),
+                                    image:
+                                        AssetImage("assets/images/SW.png")))),
                       ),
                       SizedBox(
                         height: 5,
@@ -296,6 +297,29 @@ class _HomeState extends State<Home> {
                 textAlign: TextAlign.left,
               ),
             ),
+            // https://pub.dev/packages/carousel_pro
+            SizedBox(
+                height: 200.0,
+                width: 350.0,
+                child: Carousel(
+                  images: [
+                    ExactAssetImage("assets/images/mesa1.png"),
+                    ExactAssetImage("assets/images/mesa2.png"),
+                    ExactAssetImage("assets/images/mesa3.png"),
+                  ],
+                  autoplay: false,
+                  dotSize: 4,
+                  dotSpacing: 15,
+                  dotColor: Colors.lightGreenAccent,
+                  indicatorBgPadding: 5,
+                  dotBgColor: Color(0xFF002B32),
+                  borderRadius: true,
+                  moveIndicatorFromBottom: 180.0,
+                  noRadiusForIndicator: true,
+                )),
+            SizedBox(
+              height: 50,
+            )
           ],
         ),
       ),
@@ -307,7 +331,7 @@ class _HomeState extends State<Home> {
               builder: (context) => CriarMesa(),
             ),
           );
-        }, 
+        },
         child: Icon(Icons.add),
         backgroundColor: Color(0xFF002B32),
       ),
