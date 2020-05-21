@@ -43,7 +43,7 @@ class _HomeState extends State<Home> {
             Padding(
               padding: EdgeInsets.only(top: 20, bottom: 20),
               child: Text(
-                "Categoria",
+                "Categorias",
                 style: TextStyle(
                   fontSize: 20,
                 ),
