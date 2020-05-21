@@ -312,14 +312,11 @@ class _HomeState extends State<Home> {
                   dotSpacing: 15,
                   dotColor: Colors.lightGreenAccent,
                   indicatorBgPadding: 5,
-                  dotBgColor: Color(0xFF002B32),
+                  dotBgColor: Color(0xFF002B32).withOpacity(0.5),
                   borderRadius: true,
                   moveIndicatorFromBottom: 180.0,
                   noRadiusForIndicator: true,
                 )),
-            SizedBox(
-              height: 50,
-            )
           ],
         ),
       ),
