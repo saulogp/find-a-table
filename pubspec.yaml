@@ -25,6 +25,7 @@ dependencies:
   cupertino_icons: ^0.1.2
   flare_flutter: ^1.0.2
   image_picker: ^0.6.0+3
+  carousel_pro: ^1.0.0
 
 dev_dependencies:
   flutter_test:
@@ -51,6 +52,17 @@ flutter:
    - assets/images/person.png
    - assets/images/chululu.png
    - assets/flare/logoanimada.flr
+   - assets/images/Cyberpunk.png
+   - assets/images/Investigação.png
+   - assets/images/Medieval.png
+   - assets/images/SW.png
+   - assets/images/Terror.png
+   - assets/images/Vampi.png
+   - assets/images/Zumbi.png
+   - assets/images/mesa1.png
+   - assets/images/mesa2.png
+   - assets/images/mesa3.png
+
   #  - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
