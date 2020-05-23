@@ -1,6 +1,6 @@
 import 'package:finda_a_table/pages/criar-mesa.dart';
 import 'package:flutter/material.dart';
-// import 'package:carousel_pro/carousel_pro.dart';
+import 'package:carousel_pro/carousel_pro.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -298,25 +298,25 @@ class _HomeState extends State<Home> {
               ),
             ),
             // https://pub.dev/packages/carousel_pro
-            // SizedBox(
-            //     height: 200.0,
-            //     width: 350.0,
-            //     child: Carousel(
-            //       images: [
-            //         ExactAssetImage("assets/images/mesa1.png"),
-            //         ExactAssetImage("assets/images/mesa2.png"),
-            //         ExactAssetImage("assets/images/mesa3.png"),
-            //       ],
-            //       autoplay: false,
-            //       dotSize: 4,
-            //       dotSpacing: 15,
-            //       dotColor: Colors.lightGreenAccent,
-            //       indicatorBgPadding: 5,
-            //       dotBgColor: Color(0xFF002B32).withOpacity(0.5),
-            //       borderRadius: true,
-            //       moveIndicatorFromBottom: 180.0,
-            //       noRadiusForIndicator: true,
-            //     )),
+            SizedBox(
+                height: 200.0,
+                width: 350.0,
+                child: Carousel(
+                  images: [
+                    ExactAssetImage("assets/images/mesa1.png"),
+                    ExactAssetImage("assets/images/mesa2.png"),
+                    ExactAssetImage("assets/images/mesa3.png"),
+                  ],
+                  autoplay: false,
+                  dotSize: 4,
+                  dotSpacing: 15,
+                  dotColor: Colors.lightGreenAccent,
+                  indicatorBgPadding: 5,
+                  dotBgColor: Color(0xFF002B32).withOpacity(0.5),
+                  borderRadius: true,
+                  moveIndicatorFromBottom: 180.0,
+                  noRadiusForIndicator: true,
+                )),
           ],
         ),
       ),

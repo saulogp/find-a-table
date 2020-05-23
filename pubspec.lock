@@ -29,8 +29,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.0"
-<<<<<<< HEAD
-=======
   carousel_pro:
     dependency: "direct main"
     description:
@@ -38,7 +36,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.0"
->>>>>>> 7612a67e3c26f50731c3a046afe78b1f9dbc75e6
   charcode:
     dependency: transitive
     description:
