@@ -11,12 +11,47 @@ class Apresentation extends StatelessWidget {
         child: Column(
           children: <Widget>[
             Text(
-              "Olá aventureiro!\n\nNossos elfos descobriram\n que é a sua \nprimeira expedição\n conosco! Seja bem-vindo!!!\n\nAntes de usufruir das maravilhas deste\n sistema, você precisará\n completar seu \"Perfil de Aventureiro\"\n[os piratas não gostam muito de forasteiros]",
+              "Olá aventureiro!",
+              style: TextStyle(
+                fontSize: 22,
+                fontWeight: FontWeight.w500,
+                color: Color(0xFF002B32),
+              ),
+              textAlign: TextAlign.center,
+            ),
+            Text(
+              "\nNossos elfos descobriram que é a sua primeira expedição conosco!",
               style: TextStyle(
                 fontSize: 22,
                 color: Color(0xFF002B32),
               ),
+              textAlign: TextAlign.justify,
+            ),
+            Text(
+              "\nSeja bem-vindo!!!",
+              style: TextStyle(
+                fontSize: 22,
+                fontWeight: FontWeight.w500,
+                color: Color(0xFF002B32),
+              ),
               textAlign: TextAlign.center,
+            ),
+            Text(
+              "\nAntes de usufruir das maravilhas deste sistema, você precisará completar seu \"Perfil de Aventureiro\".",
+              style: TextStyle(
+                fontSize: 22,
+                color: Color(0xFF002B32),
+              ),
+              textAlign: TextAlign.justify,
+            ),
+            Text(
+              "\n[os piratas não gostam muito de forasteiros]",
+              style: TextStyle(
+                fontSize: 20,
+                fontStyle: FontStyle.italic,
+                color: Color(0xFF002B32),
+              ),
+              textAlign: TextAlign.justify,
             ),
             SizedBox(
               height: 50,
