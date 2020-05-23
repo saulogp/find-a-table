@@ -1,4 +1,5 @@
 import 'package:finda_a_table/pages/cadastrar.dart';
+import 'package:finda_a_table/pages/bottomNavigationBar.dart';
 import 'package:finda_a_table/pages/recuperar-senha.dart';
 import 'package:flutter/material.dart';
 // import 'package:flare_flutter/flare_actor.dart';
@@ -115,12 +116,12 @@ class _LoginPageState extends State<LoginPage> {
                 child: SizedBox.expand(
                   child: FlatButton(
                     onPressed: () {
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //     builder: (context) => Home(),
-                      //   ),
-                      // );
+                       Navigator.push(
+                         context,
+                         MaterialPageRoute(
+                           builder: (context) => HomeBar(),
+                         ),
+                       );
                     },
                     child: Text(
                       "Aventurar!!!",
