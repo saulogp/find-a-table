@@ -1,6 +1,7 @@
 import 'package:finda_a_table/pages/editar-Perfil.dart';
 import 'package:finda_a_table/pages/home.dart';
 import 'package:finda_a_table/pages/criar-mesa.dart';
+import 'package:finda_a_table/pages/mesas-criadas.dart';
 import 'package:flutter/material.dart';
 
 class HomeBar extends StatefulWidget {
@@ -13,7 +14,7 @@ class _HomeBarState extends State<HomeBar> {
   int _pageSelect = 0;
   final _pageOptions = [
     Home(),
-    CriarMesa(),
+    MesasCriadas(),
     EditarPerfil()
   ];
 
