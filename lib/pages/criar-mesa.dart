@@ -1,7 +1,6 @@
 import 'package:finda_a_table/pages/config-mesa.dart';
 import 'package:flutter/material.dart';
 
-import 'mesas.dart';
 
 class CriarMesa extends StatefulWidget {
   @override
