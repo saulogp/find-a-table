@@ -1,4 +1,5 @@
 import 'package:finda_a_table/pages/config-mesa.dart';
+import 'package:finda_a_table/pages/criar-mesa.dart';
 import 'package:flutter/material.dart';
 
 class DetalhesMesa extends StatefulWidget {
@@ -56,7 +57,14 @@ class _DetalhesMesaState extends State<DetalhesMesa> {
                         ),
                       ),
                       IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => CriarMesa(),
+                            ),
+                          );
+                        },
                         icon: Icon(Icons.edit, color: Color(0xFF002B32)),
                       ),
                     ],
@@ -103,7 +111,7 @@ class _DetalhesMesaState extends State<DetalhesMesa> {
                 ],
               )),
           Container(
-              padding: EdgeInsets.only(top:10, left: 25, right: 25),
+              padding: EdgeInsets.only(top: 10, left: 25, right: 25),
               child: Column(
                 children: <Widget>[
                   Row(
@@ -121,8 +129,8 @@ class _DetalhesMesaState extends State<DetalhesMesa> {
                   )
                 ],
               )),
-              Container(
-              padding: EdgeInsets.only(top:10, left: 25, right: 25),
+          Container(
+              padding: EdgeInsets.only(top: 10, left: 25, right: 25),
               child: Column(
                 children: <Widget>[
                   Row(
