@@ -1,6 +1,5 @@
 import 'package:finda_a_table/pages/editar-Perfil.dart';
 import 'package:finda_a_table/pages/home.dart';
-import 'package:finda_a_table/pages/criar-mesa.dart';
 import 'package:finda_a_table/pages/mesas-criadas.dart';
 import 'package:flutter/material.dart';
 
@@ -43,7 +42,7 @@ class _HomeBarState extends State<HomeBar> {
           BottomNavigationBarItem(
             icon: Icon(Icons.calendar_today, color: Color(0xFF002B32),),
             title: Text(
-              "Agenda",
+              "Mesas",
               style: TextStyle(
                 color: Color(0xFF002B32),
                 fontWeight: FontWeight.w300,

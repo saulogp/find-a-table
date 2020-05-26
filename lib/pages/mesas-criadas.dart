@@ -1,4 +1,5 @@
 import 'package:finda_a_table/pages/criar-mesa.dart';
+import 'package:finda_a_table/pages/detalhes-mesa.dart';
 import 'package:flutter/material.dart';
 
 class MesasCriadas extends StatefulWidget {
@@ -13,9 +14,7 @@ class _MesasCriadasState extends State<MesasCriadas> {
       appBar: AppBar(
         title: Text(
           "Mesas Criadas",
-          style: TextStyle(
-            color: Color(0xFF002B32)
-          ),
+          style: TextStyle(color: Color(0xFF002B32)),
         ),
         backgroundColor: Colors.white,
         centerTitle: true,
@@ -27,11 +26,11 @@ class _MesasCriadasState extends State<MesasCriadas> {
             Column(
               children: <Widget>[
                 GestureDetector(
-                  onTap: (){
+                  onTap: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => Container(color: Colors.red,),
+                        builder: (context) => DetalhesMesa(),
                       ),
                     );
                   },
@@ -63,11 +62,11 @@ class _MesasCriadasState extends State<MesasCriadas> {
                   ),
                 ),
                 GestureDetector(
-                  onTap: (){
+                  onTap: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => Container(color: Colors.deepPurpleAccent,),
+                        builder: (context) => DetalhesMesa(),
                       ),
                     );
                   },
@@ -99,11 +98,11 @@ class _MesasCriadasState extends State<MesasCriadas> {
                   ),
                 ),
                 GestureDetector(
-                  onTap: (){
+                  onTap: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => Container(color: Colors.blueAccent,),
+                        builder: (context) => DetalhesMesa(),
                       ),
                     );
                   },

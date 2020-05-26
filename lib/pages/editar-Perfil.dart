@@ -1,4 +1,3 @@
-import 'package:finda_a_table/pages/detalhes-mesa.dart';
 import 'package:finda_a_table/pages/perfil.dart';
 import 'package:flutter/material.dart';
 
@@ -91,14 +90,7 @@ class _EditarPerfilState extends State<EditarPerfil> {
                   ),
                   child: SizedBox.expand(
                     child: FlatButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => DetalhesMesa(),
-                          ),
-                        );
-                      },
+                      onPressed: () {},
                       child: Text(
                         "Sair",
                         style: TextStyle(
