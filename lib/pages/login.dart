@@ -1,3 +1,4 @@
+import 'package:finda_a_table/apis/api-login.dart';
 import 'package:finda_a_table/pages/cadastrar.dart';
 import 'package:finda_a_table/pages/bottomNavigationBar.dart';
 import 'package:finda_a_table/pages/recuperar-senha.dart';
@@ -115,13 +116,21 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 child: SizedBox.expand(
                   child: FlatButton(
-                    onPressed: () {
-                       Navigator.push(
-                         context,
-                         MaterialPageRoute(
-                           builder: (context) => HomeBar(),
-                         ),
-                       );
+                    onPressed: () async{
+                      String email, senha;
+                      email = _userController.text;
+                      senha = _passwordController.text;
+                      print("Login: $email\nSenha: $senha");
+                      var response = await LoginAPI.login(email, senha);
+
+                      if(response){
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => HomeBar(),
+                          ),
+                        );
+                      }
                     },
                     child: Text(
                       "Aventurar!!!",
