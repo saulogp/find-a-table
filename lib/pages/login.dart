@@ -121,14 +121,36 @@ class _LoginPageState extends State<LoginPage> {
                       email = _userController.text;
                       senha = _passwordController.text;
                       print("Login: $email\nSenha: $senha");
-                      var response = await LoginAPI.login(email, senha);
+                      
+                      var usuario = await LoginAPI.login(email, senha);
 
-                      if(response){
+                      if(usuario != null){
+                        print("$usuario");
+
                         Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (context) => HomeBar(),
                           ),
+                        );
+                      }else{
+                        //alert
+                        return showDialog(
+                          context: context,
+                          builder: (context){
+                            return AlertDialog(
+                              title: Text("Login"),
+                              content: Text("Login incorreto!"),
+                              actions: <Widget>[
+                                FlatButton(
+                                  child: Text("OK"),
+                                  onPressed: (){
+                                    Navigator.pop(context);
+                                  }
+                                ),
+                              ],
+                            );
+                          }
                         );
                       }
                     },
