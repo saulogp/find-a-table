@@ -1,5 +1,6 @@
 import 'package:finda_a_table/pages/apresentation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class CadastrarPage extends StatefulWidget {
   @override
@@ -14,8 +15,9 @@ class _CadastrarPageState extends State<CadastrarPage> {
   TextEditingController _confirmPasswordController = new TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
+
   bool _validade = false;
-  String nome, email, senha, confSenha;
+  String usuario, email, senha, confSenha;
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +46,7 @@ class _CadastrarPageState extends State<CadastrarPage> {
                 ),
                 TextFormField(
                   keyboardType: TextInputType.emailAddress,
-                  maxLength: 20,
+                  inputFormatters: [LengthLimitingTextInputFormatter(20)],
                   validator: _validarNome,
                   controller: _userController,
                   decoration: InputDecoration(
@@ -59,7 +61,7 @@ class _CadastrarPageState extends State<CadastrarPage> {
                         borderSide: BorderSide(color: Color(0xFF002B32)),
                       )),
                   onSaved: (String val){
-                    nome = val;
+                    usuario = val;
                   },
                   style: TextStyle(
                     fontSize: 15,
@@ -78,7 +80,7 @@ class _CadastrarPageState extends State<CadastrarPage> {
                 ),
                 TextFormField(
                   keyboardType: TextInputType.emailAddress,
-                  maxLength: 75,
+                  inputFormatters: [LengthLimitingTextInputFormatter(75)],
                   validator: _validarEmail,
                   controller: _emailController,
                   decoration: InputDecoration(
@@ -112,7 +114,7 @@ class _CadastrarPageState extends State<CadastrarPage> {
                 ),
                 TextFormField(
                   keyboardType: TextInputType.emailAddress,
-                  maxLength: 20,
+                  inputFormatters: [LengthLimitingTextInputFormatter(20)],
                   validator: _validarSenha,
                   controller: _passwordController,
                   obscureText: true,
@@ -147,8 +149,8 @@ class _CadastrarPageState extends State<CadastrarPage> {
                 ),
                 TextFormField(
                   keyboardType: TextInputType.emailAddress,
-                  maxLength: 20,
-                  //validator: _validarConfSenha,
+                  inputFormatters: [LengthLimitingTextInputFormatter(20)],
+                  validator: _validarConfSenha,
                   controller: _confirmPasswordController,
                   obscureText: true,
                   decoration: InputDecoration(
@@ -202,18 +204,18 @@ class _CadastrarPageState extends State<CadastrarPage> {
   }
 
   String _validarNome(String value){
-    String pattern = r'(^[\w][ç~]*$)';
+    String pattern = r'(^[a-zA-Z ]*$)';
     RegExp regExp = RegExp(pattern);
-    if(value.length == 0){
+    if(value.isEmpty){
       return "Informe o Nome";
     }else if(!regExp.hasMatch(value)){
-      return "O nome deve conter carqacteres de a-z ou A-Z";
+      return "O nome deve conter caracteres de a-z ou A-Z";
     }
     return null;
   }
 
   String _validarEmail(String value){
-    String pattern = r'(^[\w][\d][;\-!@]*$)';
+    String pattern = r'(^([\w\-]+\.)*[\w\- ]+@([\w\- ]+\.)+([\w\-]{2,3})$)';
     RegExp regExp = RegExp(pattern);
     if(value.isEmpty){
       return "Informe o Email";
@@ -224,12 +226,27 @@ class _CadastrarPageState extends State<CadastrarPage> {
   }
 
   String _validarSenha(String value){
-    String pattern = r'(^[\w][\d][][.!@\-][/]*$)';
+    String pattern = r'(^\w{4,10}$ ^[a-zA-Z]\w{3,9}$ ^[a-zA-Z]\w*\d+\w*$)';
     RegExp regExp = RegExp(pattern);
     if(value.isEmpty){
       return "Informe a Senha";
-    }else if(value.length <= 20 || value.length > 5){
+    }else if(value.length > 5){
       return "Sua senha deve ter no minímo 5 caracteres e no máximo 20 caracteres";
+    }else if(!regExp.hasMatch(value)){
+      return "Senha Inválida";
+    }
+    return null;
+  }
+
+  String _validarConfSenha(String value){
+    String pattern = r'(^\w{4,10}$ ^[a-zA-Z]\w{3,9}$ ^[a-zA-Z]\w*\d+\w*$)';
+    RegExp regExp = RegExp(pattern);
+    if(value.isEmpty){
+      return "Confime sua Senha";
+    }else if(value.length > 20 || value.length <5) {
+      return "Sua senha deve ter no minímo 5 caracteres e no máximo 20 caracteres";
+    }else if(confSenha != senha){
+      return "Senha diferente!. Por Favor escreva Novamente";
     }else if(!regExp.hasMatch(value)){
       return "Senha Inválida";
     }
@@ -240,9 +257,6 @@ class _CadastrarPageState extends State<CadastrarPage> {
     if(_formKey.currentState.validate()){
       //Sem erros de Validação
       _formKey.currentState.save();
-      print("Nome $nome");
-      print("Email $email");
-      print("Senha $senha");
       Navigator.push(
         context,
         MaterialPageRoute(
