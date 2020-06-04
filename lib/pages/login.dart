@@ -11,7 +11,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  
+
   TextEditingController _userController = new TextEditingController();
   TextEditingController _passwordController = new TextEditingController();
   @override
@@ -116,6 +116,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 child: SizedBox.expand(
                   child: FlatButton(
+
                     onPressed: () async{
                       String email, senha;
                       email = _userController.text;
@@ -153,6 +154,7 @@ class _LoginPageState extends State<LoginPage> {
                           }
                         );
                       }
+
                     },
                     child: Text(
                       "Aventurar!!!",
