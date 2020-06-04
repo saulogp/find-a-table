@@ -263,12 +263,12 @@ class _CadastrarPageState extends State<CadastrarPage> {
     if(_formKey.currentState.validate()){
       //Sem erros de Validação
       _formKey.currentState.save();
-      Navigator.push(
+      /*Navigator.push(
         context,
         MaterialPageRoute(
           builder: (context) => Apresentation(),
         ),
-      );
+      );*/
     }else{
       //erro de validação
       setState(() {
