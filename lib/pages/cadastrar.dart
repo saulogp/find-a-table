@@ -226,12 +226,16 @@ class _CadastrarPageState extends State<CadastrarPage> {
   }
 
   String _validarSenha(String value){
+    senha = _passwordController.text;
+    confSenha = _confirmPasswordController.text;
     String pattern = r'(^\w{5,20}$ ^[a-zA-Z]\w{3,9}$ ^[a-zA-Z]\w*\d+\w*$)';
     RegExp regExp = RegExp(pattern);
     if(value.isEmpty) {
       return "Informe a Senha";
-    }else if(value.length < 5 || value.length >20){
+    }else if(value.length < 5 || value.length >20) {
       return "Sua senha deve ter no minimo 5 caracateres e no maximo 20 caracteres";
+    }else if(senha != confSenha){
+      return "Suas senhas estão diferentes";
     }else if(regExp.hasMatch(value)){
       return "Senha Inválida";
     }
@@ -239,6 +243,8 @@ class _CadastrarPageState extends State<CadastrarPage> {
   }
 
   String _validarConfSenha(String value){
+    senha = _passwordController.text;
+    confSenha = _confirmPasswordController.text;
     String pattern = r'(^\w{5,20}$ ^[a-zA-Z]\w{3,9}$ ^[a-zA-Z]\w*\d+\w*$)';
     RegExp regExp = RegExp(pattern);
     if(value.isEmpty){
