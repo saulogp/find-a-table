@@ -226,28 +226,28 @@ class _CadastrarPageState extends State<CadastrarPage> {
   }
 
   String _validarSenha(String value){
-    String pattern = r'(^\w{4,10}$ ^[a-zA-Z]\w{3,9}$ ^[a-zA-Z]\w*\d+\w*$)';
+    String pattern = r'(^\w{5,20}$ ^[a-zA-Z]\w{3,9}$ ^[a-zA-Z]\w*\d+\w*$)';
     RegExp regExp = RegExp(pattern);
-    if(value.isEmpty){
+    if(value.isEmpty) {
       return "Informe a Senha";
-    }else if(value.length > 5){
-      return "Sua senha deve ter no minímo 5 caracteres e no máximo 20 caracteres";
-    }else if(!regExp.hasMatch(value)){
+    }else if(value.length < 5 || value.length >20){
+      return "Sua senha deve ter no minimo 5 caracateres e no maximo 20 caracteres";
+    }else if(regExp.hasMatch(value)){
       return "Senha Inválida";
     }
     return null;
   }
 
   String _validarConfSenha(String value){
-    String pattern = r'(^\w{4,10}$ ^[a-zA-Z]\w{3,9}$ ^[a-zA-Z]\w*\d+\w*$)';
+    String pattern = r'(^\w{5,20}$ ^[a-zA-Z]\w{3,9}$ ^[a-zA-Z]\w*\d+\w*$)';
     RegExp regExp = RegExp(pattern);
     if(value.isEmpty){
       return "Confime sua Senha";
-    }else if(value.length > 20 || value.length <5) {
-      return "Sua senha deve ter no minímo 5 caracteres e no máximo 20 caracteres";
-    }else if(confSenha != senha){
-      return "Senha diferente!. Por Favor escreva Novamente";
-    }else if(!regExp.hasMatch(value)){
+    }else if(value.length < 5 || value.length >20) {
+      return "Sua senha deve ter no minimo 5 caracateres e no maximo 20 caracteres";
+    }else if(senha != confSenha){
+      return "Suas senhas estão diferentes";
+    }else if(regExp.hasMatch(value)){
       return "Senha Inválida";
     }
     return null;
