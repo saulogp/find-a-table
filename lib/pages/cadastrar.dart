@@ -1,4 +1,3 @@
-import 'package:finda_a_table/pages/apresentation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -9,7 +8,6 @@ class CadastrarPage extends StatefulWidget {
 
 class _CadastrarPageState extends State<CadastrarPage> {
 
-  TextEditingController _userController = new TextEditingController();
   TextEditingController _emailController = new TextEditingController();
   TextEditingController _passwordController = new TextEditingController();
   TextEditingController _confirmPasswordController = new TextEditingController();
@@ -17,7 +15,7 @@ class _CadastrarPageState extends State<CadastrarPage> {
   final _formKey = GlobalKey<FormState>();
 
   bool _validade = false;
-  String usuario, email, senha, confSenha;
+  String email, senha, confSenha;
 
   @override
   Widget build(BuildContext context) {
@@ -32,40 +30,6 @@ class _CadastrarPageState extends State<CadastrarPage> {
                 Image.asset(
                   "assets/images/logo-h.png",
                   height: 80,
-                ),
-                Padding(
-                  padding: EdgeInsets.only(top: 20, bottom: 10),
-                  child: Text(
-                    "Usuário",
-                    style: TextStyle(
-                      color: Color(0xFF002B32),
-                      fontWeight: FontWeight.w300,
-                      fontSize: 25,
-                    ),
-                  ),
-                ),
-                TextFormField(
-                  keyboardType: TextInputType.emailAddress,
-                  inputFormatters: [LengthLimitingTextInputFormatter(20)],
-                  validator: _validarNome,
-                  controller: _userController,
-                  decoration: InputDecoration(
-                      hintText: "Nicolas Cage",
-                      labelStyle: TextStyle(
-                        color: Color(0xFF002B32),
-                        fontWeight: FontWeight.w300,
-                        fontSize: 15,
-                      ),
-                      border: OutlineInputBorder(),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Color(0xFF002B32)),
-                      )),
-                  onSaved: (String val){
-                    usuario = val;
-                  },
-                  style: TextStyle(
-                    fontSize: 15,
-                  ),
                 ),
                 Padding(
                   padding: EdgeInsets.only(top: 20, bottom: 10),
@@ -171,6 +135,9 @@ class _CadastrarPageState extends State<CadastrarPage> {
                     fontSize: 15,
                   ),
                 ),
+                SizedBox(
+                  height: 30,
+                ),
                 Padding(
                   padding: EdgeInsets.only(top: 10, bottom: 10),
                   child: Container(
@@ -201,17 +168,6 @@ class _CadastrarPageState extends State<CadastrarPage> {
         ),
         )
     );
-  }
-
-  String _validarNome(String value){
-    String pattern = r'(^[a-zA-Z ]*$)';
-    RegExp regExp = RegExp(pattern);
-    if(value.isEmpty){
-      return "Informe o Nome";
-    }else if(!regExp.hasMatch(value)){
-      return "O nome deve conter caracteres de a-z ou A-Z";
-    }
-    return null;
   }
 
   String _validarEmail(String value){

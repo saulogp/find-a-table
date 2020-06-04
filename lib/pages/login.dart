@@ -28,7 +28,7 @@ class _LoginPageState extends State<LoginPage> {
               Padding(
                 padding: EdgeInsets.only(top: 20, bottom: 10),
                 child: Text(
-                  "Usuário",
+                  "Email",
                   style: TextStyle(
                     color: Color(0xFF002B32),
                     fontWeight: FontWeight.w300,
@@ -40,7 +40,7 @@ class _LoginPageState extends State<LoginPage> {
                 keyboardType: TextInputType.emailAddress,
                 controller: _userController,
                 decoration: InputDecoration(
-                    hintText: "Nicolas Cage",
+                    hintText: "nicolas@cage.com",
                     labelStyle: TextStyle(
                       color: Color(0xFF002B32),
                       fontWeight: FontWeight.w300,
