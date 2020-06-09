@@ -224,7 +224,7 @@ class _CadastrarPageState extends State<CadastrarPage> {
       senha = _passwordController.text;
       print("Email: $email\nSenha: $senha");
 
-      var cadastro = CadastrarApi.cadastrar(email, senha);
+      var cadastro = await CadastrarApi.cadastrar(email, senha);
 
       if (cadastro != null) {
         print("$cadastro");
