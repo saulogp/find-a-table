@@ -1,4 +1,4 @@
-import 'package:finda_a_table/pages/criar-mesa.dart';
+import 'package:finda_a_table/pages/bottomNavigationBar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 //import 'package:image_picker/image_picker.dart';
@@ -173,7 +173,7 @@ class _PerfilState extends State<Perfil> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => CriarMesa(),
+                        builder: (context) => HomeBar(),
                       ),
                     );
                   },

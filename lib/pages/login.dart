@@ -1,3 +1,4 @@
+import 'package:finda_a_table/apis/api-login.dart';
 import 'package:finda_a_table/pages/cadastrar.dart';
 import 'package:finda_a_table/pages/bottomNavigationBar.dart';
 import 'package:finda_a_table/pages/recuperar-senha.dart';
@@ -10,7 +11,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  
+
   TextEditingController _userController = new TextEditingController();
   TextEditingController _passwordController = new TextEditingController();
   @override
@@ -27,7 +28,7 @@ class _LoginPageState extends State<LoginPage> {
               Padding(
                 padding: EdgeInsets.only(top: 20, bottom: 10),
                 child: Text(
-                  "Usuário",
+                  "Email",
                   style: TextStyle(
                     color: Color(0xFF002B32),
                     fontWeight: FontWeight.w300,
@@ -39,7 +40,7 @@ class _LoginPageState extends State<LoginPage> {
                 keyboardType: TextInputType.emailAddress,
                 controller: _userController,
                 decoration: InputDecoration(
-                    hintText: "Nicolas Cage",
+                    hintText: "nicolas@cage.com",
                     labelStyle: TextStyle(
                       color: Color(0xFF002B32),
                       fontWeight: FontWeight.w300,
@@ -115,13 +116,45 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 child: SizedBox.expand(
                   child: FlatButton(
-                    onPressed: () {
-                       Navigator.push(
-                         context,
-                         MaterialPageRoute(
-                           builder: (context) => HomeBar(),
-                         ),
-                       );
+
+                    onPressed: () async{
+                      String email, senha;
+                      email = _userController.text;
+                      senha = _passwordController.text;
+                      print("Login: $email\nSenha: $senha");
+                      
+                      var usuario = await LoginAPI.login(email, senha);
+
+                      if(usuario != null){
+                        print("$usuario");
+
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => HomeBar(),
+                          ),
+                        );
+                      }else{
+                        //alert
+                        return showDialog(
+                          context: context,
+                          builder: (context){
+                            return AlertDialog(
+                              title: Text("Login"),
+                              content: Text("Login incorreto!"),
+                              actions: <Widget>[
+                                FlatButton(
+                                  child: Text("OK"),
+                                  onPressed: (){
+                                    Navigator.pop(context);
+                                  }
+                                ),
+                              ],
+                            );
+                          }
+                        );
+                      }
+
                     },
                     child: Text(
                       "Aventurar!!!",
