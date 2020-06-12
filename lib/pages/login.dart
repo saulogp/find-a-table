@@ -2,6 +2,7 @@ import 'package:finda_a_table/apis/api-login.dart';
 import 'package:finda_a_table/pages/cadastrar.dart';
 import 'package:finda_a_table/pages/bottomNavigationBar.dart';
 import 'package:finda_a_table/pages/recuperar-senha.dart';
+import 'package:finda_a_table/reciclagem/label.dart';
 import 'package:flutter/material.dart';
 // import 'package:flare_flutter/flare_actor.dart';
 
@@ -25,17 +26,7 @@ class _LoginPageState extends State<LoginPage> {
                 "assets/images/LogoFaT.png",
                 height: 150,
               ),
-              Padding(
-                padding: EdgeInsets.only(top: 20, bottom: 10),
-                child: Text(
-                  "Email",
-                  style: TextStyle(
-                    color: Color(0xFF002B32),
-                    fontWeight: FontWeight.w300,
-                    fontSize: 25,
-                  ),
-                ),
-              ),
+              labelComum("Email"),
               TextFormField(
                 keyboardType: TextInputType.emailAddress,
                 controller: _userController,
@@ -54,17 +45,7 @@ class _LoginPageState extends State<LoginPage> {
                   fontSize: 15,
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.only(top: 20, bottom: 10),
-                child: Text(
-                  "Senha",
-                  style: TextStyle(
-                    color: Color(0xFF002B32),
-                    fontWeight: FontWeight.w300,
-                    fontSize: 25,
-                  ),
-                ),
-              ),
+              labelComum("Senha"),
               TextFormField(
                 keyboardType: TextInputType.emailAddress,
                 controller: _passwordController,

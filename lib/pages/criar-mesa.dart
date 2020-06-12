@@ -1,4 +1,5 @@
 import 'package:finda_a_table/pages/config-mesa.dart';
+import 'package:finda_a_table/reciclagem/label.dart';
 import 'package:flutter/material.dart';
 
 
@@ -28,17 +29,7 @@ class _CriarMesaState extends State<CriarMesa> {
                 ),
                 textAlign: TextAlign.center,
               ),
-              Padding(
-                padding: EdgeInsets.only(top: 20, bottom: 10),
-                child: Text(
-                  "Nome",
-                  style: TextStyle(
-                    color: Color(0xFF002B32),
-                    fontWeight: FontWeight.w300,
-                    fontSize: 25,
-                  ),
-                ),
-              ),
+              labelComum("Nome"),
               TextFormField(
                 keyboardType: TextInputType.text,
                 controller: _nomeController,
@@ -57,17 +48,7 @@ class _CriarMesaState extends State<CriarMesa> {
                   fontSize: 15,
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.only(top: 20, bottom: 10),
-                child: Text(
-                  "Sistema",
-                  style: TextStyle(
-                    color: Color(0xFF002B32),
-                    fontWeight: FontWeight.w300,
-                    fontSize: 25,
-                  ),
-                ),
-              ),
+              labelComum("Sistema"),
               TextFormField(
                 keyboardType: TextInputType.text,
                 controller: _sistemaController,
@@ -86,17 +67,7 @@ class _CriarMesaState extends State<CriarMesa> {
                   fontSize: 15,
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.only(top: 20, bottom: 10),
-                child: Text(
-                  "Nº de participantes",
-                  style: TextStyle(
-                    color: Color(0xFF002B32),
-                    fontWeight: FontWeight.w300,
-                    fontSize: 25,
-                  ),
-                ),
-              ),
+              labelComum("Nº de Participantes"),
               TextFormField(
                 keyboardType: TextInputType.text,
                 controller: _numController,
@@ -115,17 +86,7 @@ class _CriarMesaState extends State<CriarMesa> {
                   fontSize: 15,
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.only(top: 20, bottom: 10),
-                child: Text(
-                  "Tags",
-                  style: TextStyle(
-                    color: Color(0xFF002B32),
-                    fontWeight: FontWeight.w300,
-                    fontSize: 25,
-                  ),
-                ),
-              ),
+              labelComum("Tags"),
               TextFormField(
                 keyboardType: TextInputType.text,
                 controller: _tagsController,
@@ -144,17 +105,7 @@ class _CriarMesaState extends State<CriarMesa> {
                   fontSize: 15,
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.only(top: 20, bottom: 10),
-                child: Text(
-                  "Descrição",
-                  style: TextStyle(
-                    color: Color(0xFF002B32),
-                    fontWeight: FontWeight.w300,
-                    fontSize: 25,
-                  ),
-                ),
-              ),
+              labelComum("Descrição"),
               TextFormField(
                 keyboardType: TextInputType.text,
                 controller: _descController,
