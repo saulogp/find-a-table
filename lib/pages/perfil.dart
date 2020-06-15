@@ -4,6 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 //import 'package:image_picker/image_picker.dart';
+import 'package:intl/intl.dart';
+import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
 
 class Perfil extends StatefulWidget {
   @override
@@ -15,12 +17,12 @@ class _PerfilState extends State<Perfil> {
   TextEditingController _nomeController = TextEditingController();
   TextEditingController _sobrenomeController = TextEditingController();
   TextEditingController _nicknameController = TextEditingController();
-  TextEditingController _dataNascimentoController = TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
+  final _format = DateFormat("dd/MM/yyyy");
 
   bool _validade = false;
-  String nome, sobrenome, nickname, dataNasc;
+  String nome, sobrenome, nickname;
 
   @override
   Widget build(BuildContext context) {
@@ -125,10 +127,7 @@ class _PerfilState extends State<Perfil> {
                 },
               ),
               labelComum("Data de nascimento"),
-              TextFormField(
-                keyboardType: TextInputType.datetime,
-                //validator: _validarDataNasc,
-                controller: _dataNascimentoController,
+              DateTimeField(
                 decoration: InputDecoration(
                     hintText: "DD/MM/AAAA",
                     labelStyle: TextStyle(
@@ -143,8 +142,15 @@ class _PerfilState extends State<Perfil> {
                 style: TextStyle(
                   fontSize: 15,
                 ),
-                onSaved: (String val){
-                  dataNasc = val;
+                format: _format,
+                onShowPicker: (context, currentValue){
+                  return showDatePicker(
+                    context: context,
+                    initialDate: currentValue ?? DateTime.now(),
+                    firstDate: DateTime(1900),
+                    lastDate: DateTime(2100),
+                    locale: Locale("pt")
+                  );
                 },
               ),
               SizedBox(
