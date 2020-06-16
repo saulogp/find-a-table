@@ -152,6 +152,12 @@ class _PerfilState extends State<Perfil> {
                     locale: Locale("pt")
                   );
                 },
+                validator: (value) {
+                  if ((value.toString().isEmpty) || (DateTime.tryParse(value.toString()) == null)) {
+                    return "Informe sua Data de Nascimento";
+                  }
+                  return null;
+                },
               ),
               SizedBox(
                 height: 10,
@@ -211,11 +217,11 @@ class _PerfilState extends State<Perfil> {
   }
 
   String _validarNickname(String value){
-    String pattern = r'(^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$)';
+    String pattern = r'(^[:word:][:punct:][:blank:]{1,20}$)';
     RegExp regExp = RegExp(pattern);
     if(value.isEmpty){
       return "Informe o Nickname";
-    }else if(!regExp.hasMatch(value)){
+    }else if(regExp.hasMatch(value)){
       return "Nickname Inválido";
     }
     return null;
