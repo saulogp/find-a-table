@@ -103,7 +103,7 @@ class _LoginPageState extends State<LoginPage> {
                       email = _userController.text;
                       senha = _passwordController.text;
                       print("Login: $email\nSenha: $senha");
-                      
+
                       var usuario = await LoginAPI.login(email, senha);
 
                       if(usuario != null){
