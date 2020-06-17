@@ -1,5 +1,4 @@
-# Find a Table
-<h1 align="center"><img src="https://user-images.githubusercontent.com/38708863/84934325-8d057f80-b0ad-11ea-9d8d-438b99088656.png" width="15%" alt="LogoFaT"/></h1>
+<h1 align="center"><img src="https://user-images.githubusercontent.com/38708863/84934325-8d057f80-b0ad-11ea-9d8d-438b99088656.png" width="15%" alt="LogoFaT"/><br>Find a Table</h1>
 
 <p align="justify">Imaginar, criar e expandir: isso é o que é necessário para criar seu próprio mundo em uma aventura RPG, entretanto há perigos em seu caminho, nas suas muitas aventuras e para seguir em frente com sua aventura, será necessário um grupo de aventureiros, que vai desbravar essa aventura junto, mas separado, com você.</p>
 
