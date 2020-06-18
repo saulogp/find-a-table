@@ -40,3 +40,7 @@ Para executar o projeto execute o comando abaixo.
 ```
 $ flutter run
 ```
+
+## Install APK
+
+Faça download do .apk nesse link [clique aqui](https://drive.google.com/file/d/1RoGnxdFekYoCPpf93tdpLevjNEMaBd05/view?usp=sharing)!
