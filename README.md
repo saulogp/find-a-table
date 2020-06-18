@@ -9,7 +9,7 @@
 
 ## Preview 
 
-![gifFAT](https://user-images.githubusercontent.com/38708863/84939088-2fc0fc80-b0b4-11ea-9dfc-0e7d71e5a452.gif)
+![teste](https://user-images.githubusercontent.com/38708863/85060592-e0460380-b17b-11ea-9f6f-1bb5b128bb1b.gif)
 
 
 ## Getting started
