@@ -1,9 +1,13 @@
+import 'dart:io' as Io;
+import 'dart:convert';
+import 'dart:io';
+import 'package:finda_a_table/apis/api-perfil.dart';
 import 'package:finda_a_table/pages/bottomNavigationBar.dart';
 import 'package:finda_a_table/reciclagem/label.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-//import 'package:image_picker/image_picker.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
 
@@ -17,12 +21,15 @@ class _PerfilState extends State<Perfil> {
   TextEditingController _nomeController = TextEditingController();
   TextEditingController _sobrenomeController = TextEditingController();
   TextEditingController _nicknameController = TextEditingController();
+  TextEditingController _dataNascimento = TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
   final _format = DateFormat("dd/MM/yyyy");
 
   bool _validade = false;
-  String nome, sobrenome, nickname;
+  String nome, sobrenome, nickname, image;
+
+  File _image;
 
   @override
   Widget build(BuildContext context) {
@@ -40,19 +47,10 @@ class _PerfilState extends State<Perfil> {
                   height: 140.0,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    image: DecorationImage(
-                      image: AssetImage("assets/images/person.png"),
-                    ),
                   ),
+                  child: _image == null ? Image.asset("assets/images/person.png") : Image.file(_image),
                 ),
-                onTap: () {
-                  /*ImagePicker.pickImage(source: ImageSource.camera).then((file){
-                    if(file == null) return;
-                    setState(() {
-                      file.path;
-                    });
-                  });*/
-                },
+                onTap: _getImage,
               ),
               labelComum("Nome"),
               TextFormField(
@@ -128,6 +126,7 @@ class _PerfilState extends State<Perfil> {
               ),
               labelComum("Data de nascimento"),
               DateTimeField(
+                controller: _dataNascimento,
                 decoration: InputDecoration(
                     hintText: "DD/MM/AAAA",
                     labelStyle: TextStyle(
@@ -227,16 +226,84 @@ class _PerfilState extends State<Perfil> {
     return null;
   }
 
-  _sendForm(){
+  Future _getImage() async{
+    // ignore: deprecated_member_use
+    var image = await ImagePicker.pickImage(source: ImageSource.gallery);
+
+    setState(() {
+      _image = image;
+      print("_image: $_image");
+    });
+  }
+
+   _convertImageToBase64(){
+    var _pathImage = _image.path;
+    final bytes = Io.File("$_pathImage").readAsBytesSync();
+
+    String img64 = base64Encode(bytes);
+    print(img64.substring(0, 1000));
+
+    return img64;
+  }
+
+  _sendForm() async{
     if(_formKey.currentState.validate()){
       //sem erros de validação
       _formKey.currentState.save();
-      /*Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => HomeBar(),
-        ),
-      );*/
+
+      String name, lastname, nickname, avatar, datanascimento;
+      name = _nomeController.text;
+      lastname = _sobrenomeController.text;
+      avatar = _convertImageToBase64();
+      nickname = _nicknameController.text;
+      datanascimento = _dataNascimento.text;
+      print("Nome: $name\nSobrenome: $lastname\nNickname: $nickname\nData de Nascimento: $datanascimento");
+
+      var perfil = await PerfilApi.perfil(nickname, name, lastname, avatar, datanascimento);
+
+      if(perfil != null){
+        print("$perfil");
+        return showDialog(
+          context: context,
+          builder: (context){
+            return AlertDialog(
+              title: Text("Cadastrar"),
+              content: Text("Verifique seus dados"),
+              actions: <Widget>[
+                FlatButton(
+                  child: Text("OK"),
+                  onPressed: (){
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => HomeBar(),
+                      ),
+                    );
+                  },
+                ),
+              ],
+            );
+          }
+        );
+      }else{
+        return showDialog(
+          context: context,
+          builder: (context){
+            return AlertDialog(
+              title: Text("Erro"),
+              content: Text("Erro ao cadastrar, tente novamente!"),
+              actions: <Widget>[
+                FlatButton(
+                  child: Text("OK"),
+                  onPressed: (){
+                    Navigator.pop(context);
+                  },
+                ),
+              ],
+            );
+          }
+        );
+      }
     }else{
       setState(() {
         _validade = true;
