@@ -11,8 +11,7 @@ class CadastrarPage extends StatefulWidget {
 class _CadastrarPageState extends State<CadastrarPage> {
   TextEditingController _emailController = new TextEditingController();
   TextEditingController _passwordController = new TextEditingController();
-  TextEditingController _confirmPasswordController =
-      new TextEditingController();
+  TextEditingController _confirmPasswordController = new TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
 
@@ -23,150 +22,152 @@ class _CadastrarPageState extends State<CadastrarPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Form(
-      key: _formKey,
-      autovalidate: _validade,
-      child: Padding(
-          padding: EdgeInsets.only(top: 20, left: 25, right: 25),
-          child: ListView(
-            children: <Widget>[
-              Image.asset(
-                "assets/images/logo-h.png",
-                height: 80,
-              ),
-              Padding(
-                padding: EdgeInsets.only(top: 20, bottom: 10),
-                child: Text(
-                  "Email",
-                  style: TextStyle(
-                    color: Color(0xFF002B32),
-                    fontWeight: FontWeight.w300,
-                    fontSize: 25,
+          key: _formKey,
+          autovalidate: _validade,
+          child: Padding(
+              padding: EdgeInsets.only(top: 20, left: 25, right: 25),
+              child: ListView(
+                children: <Widget>[
+                  Image.asset(
+                    "assets/images/logo-h.png",
+                    height: 80,
                   ),
-                ),
-              ),
-              TextFormField(
-                keyboardType: TextInputType.emailAddress,
-                inputFormatters: [LengthLimitingTextInputFormatter(75)],
-                validator: _validarEmail,
-                controller: _emailController,
-                decoration: InputDecoration(
-                    hintText: "nicolas@cage.com",
-                    labelStyle: TextStyle(
-                      color: Color(0xFF002B32),
-                      fontWeight: FontWeight.w300,
-                      fontSize: 15,
-                    ),
-                    border: OutlineInputBorder(),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Color(0xFF002B32)),
-                    )),
-                onSaved: (String val) {
-                  email = val;
-                },
-                style: TextStyle(
-                  fontSize: 15,
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(top: 20, bottom: 10),
-                child: Text(
-                  "Senha",
-                  style: TextStyle(
-                    color: Color(0xFF002B32),
-                    fontWeight: FontWeight.w300,
-                    fontSize: 25,
-                  ),
-                ),
-              ),
-              TextFormField(
-                keyboardType: TextInputType.emailAddress,
-                inputFormatters: [LengthLimitingTextInputFormatter(20)],
-                validator: _validarSenha,
-                controller: _passwordController,
-                obscureText: true,
-                decoration: InputDecoration(
-                    hintText: "................",
-                    labelStyle: TextStyle(
-                      color: Color(0xFF002B32),
-                      fontWeight: FontWeight.w300,
-                      fontSize: 15,
-                    ),
-                    border: OutlineInputBorder(),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Color(0xFF002B32)),
-                    )),
-                onSaved: (String val) {
-                  senha = val;
-                },
-                style: TextStyle(
-                  fontSize: 15,
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(top: 20, bottom: 10),
-                child: Text(
-                  "Confirma Senha",
-                  style: TextStyle(
-                    color: Color(0xFF002B32),
-                    fontWeight: FontWeight.w300,
-                    fontSize: 25,
-                  ),
-                ),
-              ),
-              TextFormField(
-                keyboardType: TextInputType.emailAddress,
-                inputFormatters: [LengthLimitingTextInputFormatter(20)],
-                validator: _validarConfSenha,
-                controller: _confirmPasswordController,
-                obscureText: true,
-                decoration: InputDecoration(
-                    hintText: "................",
-                    labelStyle: TextStyle(
-                      color: Color(0xFF002B32),
-                      fontWeight: FontWeight.w300,
-                      fontSize: 15,
-                    ),
-                    border: OutlineInputBorder(),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Color(0xFF002B32)),
-                    )),
-                onSaved: (String val) {
-                  confSenha = val;
-                },
-                style: TextStyle(
-                  fontSize: 15,
-                ),
-              ),
-              SizedBox(
-                height: 30,
-              ),
-              Padding(
-                padding: EdgeInsets.only(top: 10, bottom: 10),
-                child: Container(
-                  height: 60,
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                      color: Color(0xFF002B32),
-                      borderRadius: BorderRadius.circular(5)),
-                  child: SizedBox.expand(
-                    child: FlatButton(
-                      onPressed: _sendForm,
-                      child: Text(
-                        "Juntar-se!!!",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w400,
-                          color: Colors.white,
-                          fontSize: 20,
-                        ),
-                        textAlign: TextAlign.center,
+                  Padding(
+                    padding: EdgeInsets.only(top: 20, bottom: 10),
+                    child: Text(
+                      "Email",
+                      style: TextStyle(
+                        color: Color(0xFF002B32),
+                        fontWeight: FontWeight.w300,
+                        fontSize: 25,
                       ),
                     ),
                   ),
-                ),
+                  TextFormField(
+                    keyboardType: TextInputType.emailAddress,
+                    inputFormatters: [LengthLimitingTextInputFormatter(75)],
+                    validator: _validarEmail,
+                    controller: _emailController,
+                    decoration: InputDecoration(
+                        hintText: "nicolas@cage.com",
+                        labelStyle: TextStyle(
+                          color: Color(0xFF002B32),
+                          fontWeight: FontWeight.w300,
+                          fontSize: 15,
+                        ),
+                        border: OutlineInputBorder(),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Color(0xFF002B32)),
+                        )),
+                    onSaved: (String val) {
+                      email = val;
+                    },
+                    style: TextStyle(
+                      fontSize: 15,
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(top: 20, bottom: 10),
+                    child: Text(
+                      "Senha",
+                      style: TextStyle(
+                        color: Color(0xFF002B32),
+                        fontWeight: FontWeight.w300,
+                        fontSize: 25,
+                      ),
+                    ),
+                  ),
+                  TextFormField(
+                    keyboardType: TextInputType.emailAddress,
+                    inputFormatters: [LengthLimitingTextInputFormatter(20)],
+                    validator: _validarSenha,
+                    controller: _passwordController,
+                    obscureText: true,
+                    decoration: InputDecoration(
+                        hintText: "................",
+                        labelStyle: TextStyle(
+                          color: Color(0xFF002B32),
+                          fontWeight: FontWeight.w300,
+                          fontSize: 15,
+                        ),
+                        border: OutlineInputBorder(),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Color(0xFF002B32)),
+                        )),
+                    onSaved: (String val) {
+                      senha = val;
+                    },
+                    style: TextStyle(
+                      fontSize: 15,
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(top: 20, bottom: 10),
+                    child: Text(
+                      "Confirma Senha",
+                      style: TextStyle(
+                        color: Color(0xFF002B32),
+                        fontWeight: FontWeight.w300,
+                        fontSize: 25,
+                      ),
+                    ),
+                  ),
+                  TextFormField(
+                    keyboardType: TextInputType.emailAddress,
+                    inputFormatters: [LengthLimitingTextInputFormatter(20)],
+                    validator: _validarConfSenha,
+                    controller: _confirmPasswordController,
+                    obscureText: true,
+                    decoration: InputDecoration(
+                        hintText: "................",
+                        labelStyle: TextStyle(
+                          color: Color(0xFF002B32),
+                          fontWeight: FontWeight.w300,
+                          fontSize: 15,
+                        ),
+                        border: OutlineInputBorder(),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Color(0xFF002B32)),
+                        )),
+                    onSaved: (String val) {
+                      confSenha = val;
+                    },
+                    style: TextStyle(
+                      fontSize: 15,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 30,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(top: 10, bottom: 10),
+                    child: Container(
+                      height: 60,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                          color: Color(0xFF002B32),
+                          borderRadius: BorderRadius.circular(5)),
+                      child: SizedBox.expand(
+                        child: FlatButton(
+                          onPressed: _sendForm,
+                          child: Text(
+                            "Juntar-se!!!",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w400,
+                              color: Colors.white,
+                              fontSize: 20,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                      ),
+                    ),
+                  )
+                ],
               )
-            ],
-          )),
-    ));
+          ),
+        )
+    );
   }
 
   String _validarEmail(String value) {
