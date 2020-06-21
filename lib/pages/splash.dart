@@ -1,4 +1,5 @@
 import 'package:finda_a_table/pages/login.dart';
+import 'package:finda_a_table/pages/perfil.dart';
 import 'package:flutter/material.dart';
 import 'package:flare_flutter/flare_actor.dart';
 
