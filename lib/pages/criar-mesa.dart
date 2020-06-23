@@ -194,16 +194,16 @@ class _CriarMesaState extends State<CriarMesa> {
     return null;
   }
 
-  String _validarSistema(String value){
-    String pattern = r'(^[:alpha:][:punct:][:blank:]{1,20}$)';
-    RegExp regExp = RegExp(pattern);
-    if(value.isEmpty){
-      return "Informe o Sistema";
-    }else if(regExp.hasMatch(value)){
-      return "Sistema Inválido";
-    }
-    return null;
-  }
+  // String _validarSistema(String value){
+  //   String pattern = r'(^[:alpha:][:punct:][:blank:]{1,20}$)';
+  //   RegExp regExp = RegExp(pattern);
+  //   if(value.isEmpty){
+  //     return "Informe o Sistema";
+  //   }else if(regExp.hasMatch(value)){
+  //     return "Sistema Inválido";
+  //   }
+  //   return null;
+  // }
 
   String _validarNum(String value){
     String pattern = r'(^[:digit:]{1,20}$)';
@@ -216,16 +216,16 @@ class _CriarMesaState extends State<CriarMesa> {
     return null;
   }
 
-  String _validarTags(String value){
-    String pattern = r'(^[:word:][:punct:][:blank:]{1,20}$)';
-    RegExp regExp = RegExp(pattern);
-    if(value.isEmpty){
-      return "Informe a Tag";
-    }else if(regExp.hasMatch(value)){
-      return "Tag Inválida";
-    }
-    return null;
-  }
+  // String _validarTags(String value){
+  //   String pattern = r'(^[:word:][:punct:][:blank:]{1,20}$)';
+  //   RegExp regExp = RegExp(pattern);
+  //   if(value.isEmpty){
+  //     return "Informe a Tag";
+  //   }else if(regExp.hasMatch(value)){
+  //     return "Tag Inválida";
+  //   }
+  //   return null;
+  // }
 
   String _validarDesc(String value){
     String pattern = r'(^[:word:][:blank:]{1,20}$)';
