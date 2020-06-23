@@ -45,15 +45,19 @@ class MesaAPI{
 
   //Get All Table 
   //https://flutter.dev/docs/cookbook/networking/fetch-data
-  //
-  // Future<Table> getAllTable(String email) async {
+  //https://www.youtube.com/watch?v=syCUTugjELQ&list=PLCIwljzzdvqnNYgoioaRS9JBTG7o9O1Vg&index=5
+  // Future<List<Table>> getAllTable(String email) async {
+    
   //   final response = await http.get('http://localhost:8080/v2/searchall/table?e=$email');
 
-  //   if (response.statusCode == 200) {
-        //Pra que essa parte funcione criar a classe com a resposta retornada!!!!!!!!
-  //     return Table.fromJson(json.decode(response.body));
-  //   } else {
-  //     throw Exception('Failed to load album');
+  //   List listaResponse = json.decode(response.body);
+
+  //   final mesa = List<Table>();
+
+  //   for(Map map in listaResponse){
+  //     Table t = Table.fromJson(map);
+  //     mesa.add(t);
   //   }
+  //   return mesa;
   // }
 }
