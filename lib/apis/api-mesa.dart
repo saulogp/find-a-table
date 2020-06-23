@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class MesaAPI{
+  //Create Table ------------------------------------------
   static Future<bool> createTable(String name, String description, int maxofparticipants, String thumbnail, String nickname) async {
     Map params = {
       "name" : name,
@@ -27,4 +28,32 @@ class MesaAPI{
     
     return status;
   }
+
+  //Delete Table ----------------------------------------------------------
+
+  // Future<Response> deleteTable(String id) async {
+  // final http.Response response = await http.delete(
+  //   'https://.../$id',
+  //   headers: <String, String>{
+  //     'Content-Type': 'application/json; charset=UTF-8',
+  //   },
+  // );
+  
+  // return response;
+  // }
+
+
+  //Get All Table 
+  //https://flutter.dev/docs/cookbook/networking/fetch-data
+  //
+  // Future<Table> getAllTable(String email) async {
+  //   final response = await http.get('http://localhost:8080/v2/searchall/table?e=$email');
+
+  //   if (response.statusCode == 200) {
+        //Pra que essa parte funcione criar a classe com a resposta retornada!!!!!!!!
+  //     return Table.fromJson(json.decode(response.body));
+  //   } else {
+  //     throw Exception('Failed to load album');
+  //   }
+  // }
 }
