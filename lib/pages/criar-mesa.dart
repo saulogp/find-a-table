@@ -11,9 +11,7 @@ class CriarMesa extends StatefulWidget {
 class _CriarMesaState extends State<CriarMesa> {
 
   TextEditingController _nomeController = TextEditingController();
-  TextEditingController _sistemaController = TextEditingController();
   TextEditingController _numController = TextEditingController();
-  TextEditingController _tagsController = TextEditingController();
   TextEditingController _descController = TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
@@ -62,29 +60,29 @@ class _CriarMesaState extends State<CriarMesa> {
                     nome = val;
                   },
                 ),
-                labelComum("Sistema"),
-                TextFormField(
-                  keyboardType: TextInputType.text,
-                  validator: _validarSistema,
-                  controller: _sistemaController,
-                  decoration: InputDecoration(
-                      hintText: "D&D",
-                      labelStyle: TextStyle(
-                        color: Color(0xFF002B32),
-                        fontWeight: FontWeight.w300,
-                        fontSize: 15,
-                      ),
-                      border: OutlineInputBorder(),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Color(0xFF002B32)),
-                      )),
-                  style: TextStyle(
-                    fontSize: 15,
-                  ),
-                  onSaved: (String val){
-                    sistema = val;
-                  },
-                ),
+                // labelComum("Sistema"),
+                // TextFormField(
+                //   keyboardType: TextInputType.text,
+                //   validator: _validarSistema,
+                //   controller: _sistemaController,
+                //   decoration: InputDecoration(
+                //       hintText: "D&D",
+                //       labelStyle: TextStyle(
+                //         color: Color(0xFF002B32),
+                //         fontWeight: FontWeight.w300,
+                //         fontSize: 15,
+                //       ),
+                //       border: OutlineInputBorder(),
+                //       focusedBorder: OutlineInputBorder(
+                //         borderSide: BorderSide(color: Color(0xFF002B32)),
+                //       )),
+                //   style: TextStyle(
+                //     fontSize: 15,
+                //   ),
+                //   onSaved: (String val){
+                //     sistema = val;
+                //   },
+                // ),
                 labelComum("Nº de Participantes"),
                 TextFormField(
                   keyboardType: TextInputType.number,
@@ -108,29 +106,29 @@ class _CriarMesaState extends State<CriarMesa> {
                     num = val;
                   },
                 ),
-                labelComum("Tags"),
-                TextFormField(
-                  keyboardType: TextInputType.text,
-                  validator: _validarTags,
-                  controller: _tagsController,
-                  decoration: InputDecoration(
-                      hintText: "Medieval; Dragão; Épico;",
-                      labelStyle: TextStyle(
-                        color: Color(0xFF002B32),
-                        fontWeight: FontWeight.w300,
-                        fontSize: 15,
-                      ),
-                      border: OutlineInputBorder(),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Color(0xFF002B32)),
-                      )),
-                  style: TextStyle(
-                    fontSize: 15,
-                  ),
-                  onSaved: (String val){
-                    tags = val;
-                  },
-                ),
+                // labelComum("Tags"),
+                // TextFormField(
+                //   keyboardType: TextInputType.text,
+                //   validator: _validarTags,
+                //   controller: _tagsController,
+                //   decoration: InputDecoration(
+                //       hintText: "Medieval; Dragão; Épico;",
+                //       labelStyle: TextStyle(
+                //         color: Color(0xFF002B32),
+                //         fontWeight: FontWeight.w300,
+                //         fontSize: 15,
+                //       ),
+                //       border: OutlineInputBorder(),
+                //       focusedBorder: OutlineInputBorder(
+                //         borderSide: BorderSide(color: Color(0xFF002B32)),
+                //       )),
+                //   style: TextStyle(
+                //     fontSize: 15,
+                //   ),
+                //   onSaved: (String val){
+                //     tags = val;
+                //   },
+                // ),
                 labelComum("Descrição"),
                 TextFormField(
                   keyboardType: TextInputType.text,
