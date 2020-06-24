@@ -5,6 +5,7 @@ import 'package:finda_a_table/pages/recuperar-senha.dart';
 import 'package:finda_a_table/reciclagem/label.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 // import 'package:flare_flutter/flare_actor.dart';
 
 class LoginPage extends StatefulWidget {
@@ -209,6 +210,17 @@ class _LoginPageState extends State<LoginPage> {
         );
         }else{
           print("$usuario");
+          String osucesso = usuario.success;
+          String oemail = _userController.text;
+          
+          //SharedPreferences prefs = await SharedPreferences.getInstance();
+          final prefs = await SharedPreferences.getInstance();
+          prefs.setString('successPrefs', osucesso);
+          prefs.setString('emailPrefs', oemail);
+
+          // print("Osucesso: "+ prefs.getString('successPrefs'));
+          // print("OEmail: "+ prefs.getString('emailPrefs'));
+          
           Navigator.push(
             context,
             MaterialPageRoute(
