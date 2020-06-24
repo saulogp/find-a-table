@@ -137,6 +137,12 @@ class _RecuperarSenhaState extends State<RecuperarSenha> {
                         Navigator.pop(context);
                       }
                   ),
+                  FlatButton(
+                      child: Text("Reenviar link"),
+                      onPressed: () async{
+                        await RecuperaSenhaAPI.recuperaSenha(_email);
+                      }
+                  ),
                 ],
               );
             }
