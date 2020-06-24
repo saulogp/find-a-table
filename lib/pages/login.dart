@@ -189,13 +189,33 @@ class _LoginPageState extends State<LoginPage> {
       var usuario = await LoginAPI.login(email, senha);
 
       if(usuario != null){
-        print("$usuario");
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => HomeBar(),
-          ),
+        if(usuario.emailCheck == false){
+          return showDialog(
+            context: context,
+            builder: (context){
+              return AlertDialog(
+                title: Text("Login"),
+                content: Text("Ative sua conta pelo link enviado no email !"),
+                actions: <Widget>[
+                  FlatButton(
+                      child: Text("OK"),
+                      onPressed: (){
+                        Navigator.pop(context);
+                      }
+                  ),
+                ],
+              );
+            }
         );
+        }else{
+          print("$usuario");
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => HomeBar(),
+            ),
+          );
+        }
       }else{
         //alert
         return showDialog(
