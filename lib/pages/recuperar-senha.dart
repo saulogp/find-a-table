@@ -1,3 +1,4 @@
+import 'package:finda_a_table/apis/api-recuperar-senha.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -113,10 +114,53 @@ class _RecuperarSenhaState extends State<RecuperarSenha> {
     return null;
   }
 
-  _sendForm(){
+  _sendForm() async {
     if(_formKey.currentState.validate()){
       //sem erros de validação
       _formKey.currentState.save();
+
+      String _email = _emailController.text;
+      print("Email $_email");
+      var resposta = await RecuperaSenhaAPI.recuperaSenha(_email);
+
+      if(resposta != null){
+        return showDialog(
+            context: context,
+            builder: (context){
+              return AlertDialog(
+                title: Text("Recuperar Senha"),
+                content: Text(resposta.success),
+                actions: <Widget>[
+                  FlatButton(
+                      child: Text("OK"),
+                      onPressed: (){
+                        Navigator.pop(context);
+                      }
+                  ),
+                ],
+              );
+            }
+        );
+      }else{
+        return showDialog(
+            context: context,
+            builder: (context){
+              return AlertDialog(
+                title: Text("Recuperar Senha"),
+                content: Text("Erro!!!"),
+                actions: <Widget>[
+                  FlatButton(
+                      child: Text("OK"),
+                      onPressed: (){
+                        Navigator.pop(context);
+                      }
+                  ),
+                ],
+              );
+            }
+        );
+      }
+      
     }else{
       setState(() {
         _validate = true;
