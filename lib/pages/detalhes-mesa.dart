@@ -21,22 +21,22 @@ class _DetalhesMesaState extends State<DetalhesMesa> {
                   width: double.maxFinite,
                   fit: BoxFit.fitWidth,
                 ),
-                Positioned(
-                  width: 50,
-                  height: 50,
-                  top: 150,
-                  right: 20,
-                  child: RaisedButton(
-                    onPressed: () {},
-                    child: Icon(
-                      Icons.edit,
-                      color: Color(0xFF002B32),
-                    ),
-                    color: Colors.white,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50)),
-                  ),
-                ),
+                // Positioned(
+                //   width: 50,
+                //   height: 50,
+                //   top: 150,
+                //   right: 20,
+                //   child: RaisedButton(
+                //     onPressed: () {},
+                //     child: Icon(
+                //       Icons.edit,
+                //       color: Color(0xFF002B32),
+                //     ),
+                //     color: Colors.white,
+                //     shape: RoundedRectangleBorder(
+                //         borderRadius: BorderRadius.circular(50)),
+                //   ),
+                // ),
               ],
             ),
           ),
