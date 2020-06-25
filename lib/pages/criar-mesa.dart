@@ -1,6 +1,9 @@
+import 'dart:io'; 
+
 import 'package:finda_a_table/pages/config-mesa.dart';
 import 'package:finda_a_table/reciclagem/label.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 
 class CriarMesa extends StatefulWidget {
@@ -13,11 +16,13 @@ class _CriarMesaState extends State<CriarMesa> {
   TextEditingController _nomeController = TextEditingController();
   TextEditingController _numController = TextEditingController();
   TextEditingController _descController = TextEditingController();
+  TextEditingController _sistemaController = TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
 
   bool _validate = false;
   String nome, sistema, num, tags, desc;
+  File _image;
 
   @override
   Widget build(BuildContext context) {
@@ -60,29 +65,29 @@ class _CriarMesaState extends State<CriarMesa> {
                     nome = val;
                   },
                 ),
-                // labelComum("Sistema"),
-                // TextFormField(
-                //   keyboardType: TextInputType.text,
-                //   validator: _validarSistema,
-                //   controller: _sistemaController,
-                //   decoration: InputDecoration(
-                //       hintText: "D&D",
-                //       labelStyle: TextStyle(
-                //         color: Color(0xFF002B32),
-                //         fontWeight: FontWeight.w300,
-                //         fontSize: 15,
-                //       ),
-                //       border: OutlineInputBorder(),
-                //       focusedBorder: OutlineInputBorder(
-                //         borderSide: BorderSide(color: Color(0xFF002B32)),
-                //       )),
-                //   style: TextStyle(
-                //     fontSize: 15,
-                //   ),
-                //   onSaved: (String val){
-                //     sistema = val;
-                //   },
-                // ),
+                labelComum("Sistema"),
+                TextFormField(
+                  keyboardType: TextInputType.text,
+                  validator: _validarSistema,
+                  controller: _sistemaController,
+                  decoration: InputDecoration(
+                      hintText: "D&D",
+                      labelStyle: TextStyle(
+                        color: Color(0xFF002B32),
+                        fontWeight: FontWeight.w300,
+                        fontSize: 15,
+                      ),
+                      border: OutlineInputBorder(),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Color(0xFF002B32)),
+                      )),
+                  style: TextStyle(
+                    fontSize: 15,
+                  ),
+                  onSaved: (String val){
+                    sistema = val;
+                  },
+                ),
                 labelComum("Nº de Participantes"),
                 TextFormField(
                   keyboardType: TextInputType.number,
@@ -152,6 +157,18 @@ class _CriarMesaState extends State<CriarMesa> {
                     desc = val;
                   },
                 ),
+                labelComum("Capa"),
+                GestureDetector(
+                child: Container(
+                  width: 140.0,
+                  height: 140.0,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                  ),
+                  child: _image == null ? Image.asset("assets/images/paisagem.jpg") : Image.file(_image),
+                ),
+                onTap: _getImage,
+              ),
                 Padding(
                   padding: EdgeInsets.only(top: 10, bottom: 10),
                   child: Container(
@@ -194,16 +211,16 @@ class _CriarMesaState extends State<CriarMesa> {
     return null;
   }
 
-  // String _validarSistema(String value){
-  //   String pattern = r'(^[:alpha:][:punct:][:blank:]{1,20}$)';
-  //   RegExp regExp = RegExp(pattern);
-  //   if(value.isEmpty){
-  //     return "Informe o Sistema";
-  //   }else if(regExp.hasMatch(value)){
-  //     return "Sistema Inválido";
-  //   }
-  //   return null;
-  // }
+  String _validarSistema(String value){
+    String pattern = r'(^[:alpha:][:punct:][:blank:]{1,20}$)';
+    RegExp regExp = RegExp(pattern);
+    if(value.isEmpty){
+      return "Informe o Sistema";
+    }else if(regExp.hasMatch(value)){
+      return "Sistema Inválido";
+    }
+    return null;
+  }
 
   String _validarNum(String value){
     String pattern = r'(^[:digit:]{1,20}$)';
@@ -236,6 +253,16 @@ class _CriarMesaState extends State<CriarMesa> {
       return "Descrição Inválida";
     }
     return null;
+  }
+
+  Future _getImage() async{
+    // ignore: deprecated_member_use
+    var image = await ImagePicker.pickImage(source: ImageSource.gallery);
+
+    setState(() {
+      _image = image;
+      print("_image: $_image");
+    });
   }
 
   _sendForm(){
