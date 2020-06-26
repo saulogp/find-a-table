@@ -129,6 +129,11 @@ class _RecuperarSenhaState extends State<RecuperarSenha> {
                 content: Text(resposta.success),
                 actions: <Widget>[
                   FlatButton(
+                      child: Text("Reenviar link"),
+                      onPressed: () async {
+                        await RecuperaSenhaAPI.recuperaSenha(_email);
+                      }),
+                  FlatButton(
                       child: Text("OK"),
                       onPressed: () {
                         Navigator.push(
@@ -137,11 +142,6 @@ class _RecuperarSenhaState extends State<RecuperarSenha> {
                             builder: (context) => LoginPage(),
                           ),
                         );
-                      }),
-                  FlatButton(
-                      child: Text("Reenviar link"),
-                      onPressed: () async {
-                        await RecuperaSenhaAPI.recuperaSenha(_email);
                       }),
                 ],
               );
