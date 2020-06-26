@@ -291,7 +291,8 @@ class _CriarMesaState extends State<CriarMesa> {
         "name": name,
         "sistema": sistema,
         "maxofparticipants": maxofparticipants,
-        "description": description
+        "description": description,
+        "thumbnail": thumbnail
       });
       Map<String, dynamic> testeImg = ({
         "thumbnail": thumbnail
