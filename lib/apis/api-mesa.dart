@@ -1,10 +1,14 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 class MesaAPI{
   //Create Table ------------------------------------------
   static Future<bool> createTable(String name, String description, int maxofparticipants, String thumbnail, String nickname) async {
+    final prefs = await SharedPreferences.getInstance();
+    String token = prefs.getString('successPrefs');
+
     Map params = {
       "name" : name,
       "description": description,
@@ -19,7 +23,7 @@ class MesaAPI{
     //converter em array
 
     var header = {"Content-Type":"application/json; charset=utf-8",
-     HttpHeaders.authorizationHeader: "Basic your_api_token_here"};
+     HttpHeaders.authorizationHeader: "$token"};
 
     var response = await http.post(url, body: _body, headers: header);
     print('Response status: ${response.statusCode}');
