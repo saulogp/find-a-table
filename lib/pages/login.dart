@@ -208,6 +208,24 @@ class _LoginPageState extends State<LoginPage> {
               );
             }
         );
+        }else if(usuario.existe == false){
+          return showDialog(
+            context: context,
+            builder: (context){
+              return AlertDialog(
+                title: Text("Login"),
+                content: Text("Não encontramos sua ficha em local algum, por favor, nos dê credenciais válidas, ou vá fazer seu registro com o Registrador."),
+                actions: <Widget>[
+                  FlatButton(
+                      child: Text("OK"),
+                      onPressed: (){
+                        Navigator.pop(context);
+                      }
+                  ),
+                ],
+              );
+            }
+        );
         }else{
           print("$usuario");
           String osucesso = usuario.success;

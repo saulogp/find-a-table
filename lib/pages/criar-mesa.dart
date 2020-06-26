@@ -1,4 +1,6 @@
-import 'dart:io'; 
+import 'dart:convert';
+import 'dart:io' as IO;
+import 'dart:io';
 
 import 'package:finda_a_table/pages/config-mesa.dart';
 import 'package:finda_a_table/reciclagem/label.dart';
@@ -264,11 +266,40 @@ class _CriarMesaState extends State<CriarMesa> {
       print("_image: $_image");
     });
   }
+  _convertImageToBase64(){
+    var _pathImage = _image.path;
+    final bytes = IO.File("$_pathImage").readAsBytesSync();
+
+    String img64 = base64Encode(bytes);
+    //print(img64.substring(0, 1000));
+
+    return img64;
+  }
 
   _sendForm(){
     if(_formKey.currentState.validate()){
       //sem erros de validação
       _formKey.currentState.save(); 
+      String name, description, sistema, thumbnail;
+      int maxofparticipants;
+      name = _nomeController.text;
+      sistema = _sistemaController.text;
+      description = _descController.text;
+      maxofparticipants = int.parse(_numController.text);
+      thumbnail = _convertImageToBase64();
+      Map<String, dynamic> teste = ({
+        "name": name,
+        "sistema": sistema,
+        "maxofparticipants": maxofparticipants,
+        "description": description
+      });
+      Map<String, dynamic> testeImg = ({
+        "thumbnail": thumbnail
+      });
+      print(teste);
+      print(testeImg);
+      print(thumbnail);
+      //print("$name, $sistema, $maxofparticipants, $description, $thumbnail \nFim");
       /*Navigator.push(
         context,
         MaterialPageRoute(
