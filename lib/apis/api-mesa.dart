@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 import 'package:http/http.dart' as http;
 
 class MesaAPI{
@@ -15,7 +16,10 @@ class MesaAPI{
     print("Json enviado: $_body");
 
     var url = 'https://w4s.herokuapp.com/v2/create/table?nickname=$nickname';
-    var header = {"Content-Type":"application/json; charset=utf-8"};
+    //converter em array
+
+    var header = {"Content-Type":"application/json; charset=utf-8",
+     HttpHeaders.authorizationHeader: "Basic your_api_token_here"};
 
     var response = await http.post(url, body: _body, headers: header);
     print('Response status: ${response.statusCode}');
