@@ -207,12 +207,12 @@ class _LoginPageState extends State<LoginPage> {
                 ],
               );
             }
-        );
+          );
         }else{
           print("$usuario");
           String osucesso = usuario.success;
           String oemail = _userController.text;
-          
+
           //SharedPreferences prefs = await SharedPreferences.getInstance();
           final prefs = await SharedPreferences.getInstance();
           prefs.setString('successPrefs', osucesso);
