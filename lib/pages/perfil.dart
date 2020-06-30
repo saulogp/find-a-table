@@ -54,20 +54,7 @@ class _PerfilState extends State<Perfil> {
                   ),
                   child: Image.asset("assets/images/person.png"),
                 ),
-                onTap: (){
-                  return AlertDialog(
-                    title: Text("Atualizações Futuras"),
-                    content: Text("Adicionar Imagens estará disponível em proximas atualizações"),
-                    actions: <Widget>[
-                      FlatButton(
-                        child: Text("OK"),
-                        onPressed: (){
-                          Navigator.pop(context);
-                        },
-                      ),
-                    ],
-                  );
-                },
+                onTap: _modalAviso,
               ),
               labelComum("Nome"),
               TextFormField(
@@ -271,6 +258,26 @@ class _PerfilState extends State<Perfil> {
 //    String img64 = base64Encode(bytes);
 //    return img64;
 //  }
+
+  _modalAviso(){
+    return showDialog(
+      context: context,
+      builder: (context){
+        return AlertDialog(
+          title: Text("Atualizações Futuras"),
+          content: Text("Para Trocar sua foto de perfil,\nSerá necessário esperar\npelas proximas atualizações"),
+          actions: <Widget>[
+            FlatButton(
+              child: Text("OK"),
+              onPressed: (){
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      }
+    );
+  }
 
   _sendForm() async{
     if(_formKey.currentState.validate()){

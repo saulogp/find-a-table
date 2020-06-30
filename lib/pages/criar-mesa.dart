@@ -148,7 +148,7 @@ class _CriarMesaState extends State<CriarMesa> {
                       ? Image.asset("assets/images/paisagem.jpg")
                       : Image.file(_imageFile),
                 ),
-                onTap: _getImage,
+                onTap: _modalAviso,
               ),
               Padding(
                 padding: EdgeInsets.only(top: 10, bottom: 10),
@@ -223,14 +223,34 @@ class _CriarMesaState extends State<CriarMesa> {
     return null;
   }
 
-  Future _getImage() async {
-    PickedFile image = await _picker.getImage(source: ImageSource.gallery);
-    if (image != null) {
-      setState(() {
-        _imageFile = IO.File(image.path);
-      });
-    }
+  _modalAviso(){
+    return showDialog(
+        context: context,
+        builder: (context){
+          return AlertDialog(
+            title: Text("Atualizações Futuras"),
+            content: Text("Para Trocar sua thumbnail da mesa, será necessário\nesperar pelas proximas\natualizações"),
+            actions: <Widget>[
+              FlatButton(
+                child: Text("OK"),
+                onPressed: (){
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          );
+        }
+    );
   }
+
+//  Future _getImage() async {
+//    PickedFile image = await _picker.getImage(source: ImageSource.gallery);
+//    if (image != null) {
+//      setState(() {
+//        _imageFile = IO.File(image.path);
+//      });
+//    }
+//  }
 
   // String _convertImageToBase64() {
   //   var _pathImage = _imageFile.path;
