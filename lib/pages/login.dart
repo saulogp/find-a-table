@@ -14,7 +14,6 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-
   TextEditingController _userController = new TextEditingController();
   TextEditingController _passwordController = new TextEditingController();
 
@@ -147,8 +146,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
               ],
-            )
-        ),
+            )),
       ),
     );
   }
@@ -177,8 +175,8 @@ class _LoginPageState extends State<LoginPage> {
     return null;
   }
 
-  _sendForm() async{
-    if(_formKey.currentState.validate()){
+  _sendForm() async {
+    if (_formKey.currentState.validate()) {
       //sem erros de validação
       _formKey.currentState.save();
 
@@ -189,8 +187,8 @@ class _LoginPageState extends State<LoginPage> {
 
       var usuario = await LoginAPI.login(email, senha);
 
-      if(usuario != null){
-        if(usuario.emailCheck == false){
+      if (usuario != null) {
+        if (usuario.emailCheck == false) {
           return showDialog(
             context: context,
             builder: (context){
@@ -208,7 +206,34 @@ class _LoginPageState extends State<LoginPage> {
               );
             }
           );
-        }else{
+        }else if (usuario.existe == false) {
+          return showDialog(
+              context: context,
+              builder: (context) {
+                return AlertDialog(
+                  title: Text("Login"),
+                  content: Text(
+                      "Não encontramos sua ficha em local algum, por favor, nos dê credenciais válidas, ou vá fazer seu registro com o Registrador."),
+                  actions: <Widget>[
+                    FlatButton(
+                        child: Text("Cadastrar"),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => CadastrarPage(),
+                            ),
+                          );
+                        }),
+                    FlatButton(
+                        child: Text("OK"),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        }),
+                  ],
+                );
+              });
+        } else {
           print("$usuario");
           String osucesso = usuario.success;
           String oemail = _userController.text;
@@ -220,7 +245,7 @@ class _LoginPageState extends State<LoginPage> {
 
           // print("Osucesso: "+ prefs.getString('successPrefs'));
           // print("OEmail: "+ prefs.getString('emailPrefs'));
-          
+
           Navigator.push(
             context,
             MaterialPageRoute(
@@ -228,32 +253,29 @@ class _LoginPageState extends State<LoginPage> {
             ),
           );
         }
-      }else{
+      } else {
         //alert
         return showDialog(
             context: context,
-            builder: (context){
+            builder: (context) {
               return AlertDialog(
                 title: Text("Login"),
                 content: Text("Login incorreto!"),
                 actions: <Widget>[
                   FlatButton(
                       child: Text("OK"),
-                      onPressed: (){
+                      onPressed: () {
                         Navigator.pop(context);
-                      }
-                  ),
+                      }),
                 ],
               );
-            }
-        );
+            });
       }
-    }else{
+    } else {
       setState(() {
         //erro de validação
         _validate = true;
       });
     }
   }
-
 }
