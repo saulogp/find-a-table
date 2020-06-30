@@ -1,31 +1,47 @@
 import 'dart:convert';
+import 'dart:io';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
-class MesaAPI{
+class MesaAPI {
   //Create Table ------------------------------------------
-  static Future<bool> createTable(String name, String description, int maxofparticipants, String thumbnail, String nickname) async {
+  static Future<bool> createTable(String name, String description,
+      int maxofparticipants, String sistema) async {
+    final prefs = await SharedPreferences.getInstance();
+    String token = prefs.getString('successPrefs');
+    String email = prefs.getString('emailPrefs');
+    //String nickname = prefs.getString('nicknamePrefs');
+
     Map params = {
-      "name" : name,
+      "name": name,
       "description": description,
       "maxofparticipants": maxofparticipants,
-      "thumbnail": thumbnail
+      "sistema": sistema,
+      // "thumbnail": thumbnail
     };
 
     var _body = json.encode(params);
     print("Json enviado: $_body");
 
-    var url = 'https://w4s.herokuapp.com/v2/create/table?nickname=$nickname';
-    var header = {"Content-Type":"application/json; charset=utf-8"};
+    var url =
+        'https://w4s.herokuapp.com/v2/create/table?nickname=ancogamer&e=$email';
+    //converter em array
+
+    var header = {
+      "Content-Type": "application/json; charset=utf-8",
+      HttpHeaders.authorizationHeader: "$token"
+    };
 
     var response = await http.post(url, body: _body, headers: header);
     print('Response status: ${response.statusCode}');
 
-    //Map mapResponse = json.decode(response.body); 
+    //Map mapResponse = json.decode(response.body);
     bool status = false;
-    if(response.statusCode == 200){
+
+    if (response.statusCode == 200) {
       status = true;
     }
-    
+
     return status;
   }
 
@@ -38,16 +54,15 @@ class MesaAPI{
   //     'Content-Type': 'application/json; charset=UTF-8',
   //   },
   // );
-  
+
   // return response;
   // }
 
-
-  //Get All Table 
+  //Get All Table
   //https://flutter.dev/docs/cookbook/networking/fetch-data
   //https://www.youtube.com/watch?v=syCUTugjELQ&list=PLCIwljzzdvqnNYgoioaRS9JBTG7o9O1Vg&index=5
   // Future<List<Table>> getAllTable(String email) async {
-    
+
   //   final response = await http.get('http://localhost:8080/v2/searchall/table?e=$email');
 
   //   List listaResponse = json.decode(response.body);
