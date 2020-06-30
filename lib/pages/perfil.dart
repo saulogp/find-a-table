@@ -1,6 +1,7 @@
 import 'dart:io' as Io;
 import 'dart:convert';
 import 'dart:io';
+import 'package:http/http.dart' as http;
 import 'package:finda_a_table/apis/api-perfil.dart';
 import 'package:finda_a_table/pages/bottomNavigationBar.dart';
 import 'package:finda_a_table/reciclagem/label.dart';
@@ -10,8 +11,10 @@ import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Perfil extends StatefulWidget {
+  
   @override
   _PerfilState createState() => _PerfilState();
 }
@@ -21,15 +24,16 @@ class _PerfilState extends State<Perfil> {
   TextEditingController _nomeController = TextEditingController();
   TextEditingController _sobrenomeController = TextEditingController();
   TextEditingController _nicknameController = TextEditingController();
-  TextEditingController _dataNascimento = TextEditingController();
+  TextEditingController _dataNascimentoController = TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
-  final _format = DateFormat("dd/MM/yyyy");
+  final _format = DateFormat("yyyy-MM-dd");
 
   bool _validade = false;
-  String nome, sobrenome, nickname, image;
+  String nome, sobrenome, image;
 
   File _image;
+  final _picker = ImagePicker();
 
   @override
   Widget build(BuildContext context) {
@@ -48,9 +52,22 @@ class _PerfilState extends State<Perfil> {
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                   ),
-                  child: _image == null ? Image.asset("assets/images/person.png") : Image.file(_image),
+                  child: Image.asset("assets/images/person.png"),
                 ),
-                onTap: _getImage,
+                onTap: (){
+                  return AlertDialog(
+                    title: Text("Atualizações Futuras"),
+                    content: Text("Adicionar Imagens estará disponível em proximas atualizações"),
+                    actions: <Widget>[
+                      FlatButton(
+                        child: Text("OK"),
+                        onPressed: (){
+                          Navigator.pop(context);
+                        },
+                      ),
+                    ],
+                  );
+                },
               ),
               labelComum("Nome"),
               TextFormField(
@@ -120,15 +137,12 @@ class _PerfilState extends State<Perfil> {
                 style: TextStyle(
                   fontSize: 15,
                 ),
-                onSaved: (String val){
-                  nickname = val;
-                },
               ),
               labelComum("Data de nascimento"),
               DateTimeField(
-                controller: _dataNascimento,
+                controller: _dataNascimentoController,
                 decoration: InputDecoration(
-                    hintText: "DD/MM/AAAA",
+                    hintText: "YYYY-MM-DD",
                     labelStyle: TextStyle(
                       color: Color(0xFF002B32),
                       fontWeight: FontWeight.w300,
@@ -226,40 +240,51 @@ class _PerfilState extends State<Perfil> {
     return null;
   }
 
-  Future _getImage() async{
-    // ignore: deprecated_member_use
-    var image = await ImagePicker.pickImage(source: ImageSource.gallery);
+//  Future _getImage() async{
+//   PickedFile image = await _picker.getImage(source: ImageSource.gallery);
+//    if(image != null){
+//      setState(() {
+//        _image = File(image.path);
+//      });
+//    }
+//  }
 
-    setState(() {
-      _image = image;
-      print("_image: $_image");
-    });
-  }
+//  _asyncFileUpload(String text, File imageFile)async{
+//    final prefs = await SharedPreferences.getInstance();
+//    String email = prefs.getString('emailPrefs');
+//
+//    var request = http.MultipartRequest("PATCH", Uri.parse("https://w4s.herokuapp.com/v1/create/user/createprofile?e=$email"));
+//    request.fields[_convertImageToBase64()] = text;
+//
+//    var pic = await http.MultipartFile.fromPath(_convertImageToBase64(), _image.path);
+//    request.files.add(pic);
+//    var response = await request.send();
+//    var responseData = await response.stream.toBytes();
+//    var responseString = String.fromCharCode(responseData);
+//    print(responseString);
+//  }
 
-   _convertImageToBase64(){
-    var _pathImage = _image.path;
-    final bytes = Io.File("$_pathImage").readAsBytesSync();
-
-    String img64 = base64Encode(bytes);
-    print(img64.substring(0, 1000));
-
-    return img64;
-  }
+//  _convertImageToBase64(){
+//    var _pathImage = _image.path;
+//    final bytes = Io.File(_pathImage).readAsBytesSync();
+//
+//    String img64 = base64Encode(bytes);
+//    return img64;
+//  }
 
   _sendForm() async{
     if(_formKey.currentState.validate()){
       //sem erros de validação
       _formKey.currentState.save();
 
-      String name, lastname, nickname, avatar, datanascimento;
+      String name, lastname, nickname, datanascimento;
       name = _nomeController.text;
       lastname = _sobrenomeController.text;
-      avatar = _convertImageToBase64();
       nickname = _nicknameController.text;
-      datanascimento = _dataNascimento.text;
+      datanascimento = _dataNascimentoController.text;
       print("Nome: $name\nSobrenome: $lastname\nNickname: $nickname\nData de Nascimento: $datanascimento");
 
-      var perfil = await PerfilApi.perfil(nickname, name, lastname, avatar, datanascimento);
+      var perfil = await PerfilApi.perfil(nickname, name, lastname, datanascimento);
 
       if(perfil != null){
         print("$perfil");
@@ -286,6 +311,12 @@ class _PerfilState extends State<Perfil> {
           }
         );
       }else{
+        print("$perfil");
+        String nickname = _nicknameController.text;
+
+        final prefs = await SharedPreferences.getInstance();
+        prefs.setString('nicknamePrefs', nickname);
+
         return showDialog(
           context: context,
           builder: (context){
