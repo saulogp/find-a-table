@@ -1,11 +1,11 @@
-import 'dart:convert';
-import 'dart:io' as IO;
+// import 'dart:convert';
+// import 'dart:io' as IO;
+// import 'package:shared_preferences/shared_preferences.dart';
+// import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 import 'package:finda_a_table/apis/api-mesa.dart';
 import 'package:finda_a_table/reciclagem/label.dart';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class CriarMesa extends StatefulWidget {
   @override
@@ -24,7 +24,7 @@ class _CriarMesaState extends State<CriarMesa> {
   String nome, sistema, num, tags, desc;
   File _imageFile;
 
-  final _picker = ImagePicker();
+  // final _picker = ImagePicker();
 
   @override
   Widget build(BuildContext context) {
@@ -223,24 +223,24 @@ class _CriarMesaState extends State<CriarMesa> {
     return null;
   }
 
-  _modalAviso(){
+  _modalAviso() {
     return showDialog(
         context: context,
-        builder: (context){
+        builder: (context) {
           return AlertDialog(
             title: Text("Atualizações Futuras"),
-            content: Text("Para Trocar sua thumbnail da mesa, será necessário\nesperar pelas proximas\natualizações"),
+            content: Text(
+                "Para Trocar sua thumbnail da mesa, será necessário\nesperar pelas proximas\natualizações"),
             actions: <Widget>[
               FlatButton(
                 child: Text("OK"),
-                onPressed: (){
+                onPressed: () {
                   Navigator.of(context).pop();
                 },
               ),
             ],
           );
-        }
-    );
+        });
   }
 
 //  Future _getImage() async {
