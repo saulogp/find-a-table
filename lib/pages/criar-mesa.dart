@@ -17,6 +17,7 @@ class _CriarMesaState extends State<CriarMesa> {
   TextEditingController _numController = TextEditingController();
   TextEditingController _descController = TextEditingController();
   TextEditingController _sistemaController = TextEditingController();
+  TextEditingController _linkController = TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
 
@@ -111,6 +112,29 @@ class _CriarMesaState extends State<CriarMesa> {
                 ),
                 onSaved: (String val) {
                   num = val;
+                },
+              ),
+              labelComum("Link"),
+              TextFormField(
+                keyboardType: TextInputType.text,
+                validator: _validarDesc,
+                controller: _linkController,
+                decoration: InputDecoration(
+                    hintText: "www.discord.com",
+                    labelStyle: TextStyle(
+                      color: Color(0xFF002B32),
+                      fontWeight: FontWeight.w300,
+                      fontSize: 15,
+                    ),
+                    border: OutlineInputBorder(),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Color(0xFF002B32)),
+                    )),
+                style: TextStyle(
+                  fontSize: 15,
+                ),
+                onSaved: (String val) {
+                  desc = val;
                 },
               ),
               labelComum("Descrição"),
@@ -260,11 +284,13 @@ class _CriarMesaState extends State<CriarMesa> {
   // }
 
   _sendForm() async {
+    print("alou");
     if (_formKey.currentState.validate()) {
+      print("alou if");
       //sem erros de validação
       _formKey.currentState.save();
 
-      String name, description, sistema;
+      String name, description, sistema, link;
       // thumbnail;
       int maxofparticipants;
 
@@ -272,14 +298,15 @@ class _CriarMesaState extends State<CriarMesa> {
       sistema = _sistemaController.text;
       description = _descController.text;
       maxofparticipants = int.parse(_numController.text);
+      link = _linkController.text;
       //thumbnail = _convertImageToBase64();
 
       // print(thumbnail);
 
       print("$name, $sistema, $maxofparticipants, $description");
 
-      var estaCriada = await MesaAPI.createTable(
-          name, description, maxofparticipants, sistema);
+      bool estaCriada = await MesaAPI.createTable(
+          name, description, maxofparticipants, sistema, link);
 
       if (estaCriada != false) {
         print("Mesa criada");

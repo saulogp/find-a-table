@@ -6,7 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class MesaAPI {
   //Create Table ------------------------------------------
   static Future<bool> createTable(String name, String description,
-      int maxofparticipants, String sistema) async {
+      int maxofparticipants, String sistema, String link) async {
     final prefs = await SharedPreferences.getInstance();
     String token = prefs.getString('successPrefs');
     String email = prefs.getString('emailPrefs');
@@ -16,7 +16,8 @@ class MesaAPI {
       "name": name,
       "description": description,
       "maxofparticipants": maxofparticipants,
-      "sistema": sistema,
+      "rpgsystem": sistema,
+      "otherlinks": link
       // "thumbnail": thumbnail
     };
 
@@ -25,7 +26,7 @@ class MesaAPI {
     print("Token: $token\nEmail: $email\nNickname: $nickname");
 
     var url =
-        'https://w4s.herokuapp.com/v2/create/table?nickname=$nickname&e=$email';
+        'https://w4s.herokuapp.com/v2/create/table?nickname=@saulo&e=$email';
     //converter em array
 
     var header = {
