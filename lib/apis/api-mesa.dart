@@ -10,7 +10,6 @@ class MesaAPI {
     final prefs = await SharedPreferences.getInstance();
     String token = prefs.getString('successPrefs');
     String email = prefs.getString('emailPrefs');
-    String nickname = prefs.getString('nicknamePrefs');
 
     Map params = {
       "name": name,
@@ -23,10 +22,9 @@ class MesaAPI {
 
     var _body = json.encode(params);
     print("Json enviado: $_body");
-    print("Token: $token\nEmail: $email\nNickname: $nickname");
+    print("Token: $token\nEmail: $email");
 
-    var url =
-        'https://w4s.herokuapp.com/v2/create/table?nickname=@saulo&e=$email';
+    var url = 'https://w4s.herokuapp.com/v2/create/table?e=$email';
     //converter em array
 
     var header = {
