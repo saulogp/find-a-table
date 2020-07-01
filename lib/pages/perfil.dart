@@ -293,6 +293,9 @@ class _PerfilState extends State<Perfil> {
           await PerfilApi.perfil(nickname, name, lastname, datanascimento);
 
       if (perfil != null) {
+        final prefs = await SharedPreferences.getInstance();
+        prefs.setString('nicknamePrefs', nickname);
+
         print("$perfil");
         return showDialog(
             context: context,
@@ -317,10 +320,6 @@ class _PerfilState extends State<Perfil> {
             });
       } else {
         print("$perfil");
-        String nickname = _nicknameController.text;
-
-        final prefs = await SharedPreferences.getInstance();
-        prefs.setString('nicknamePrefs', nickname);
 
         return showDialog(
             context: context,
