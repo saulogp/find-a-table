@@ -29,7 +29,7 @@ class PerfilApi {
     var url = "https://w4s.herokuapp.com/v1/create/user/createprofile?e=$email";
     var header = {
       "Content-Type": "application/json; charset=utf-8",
-      HttpHeaders.authorizationHeader: "$token"
+      HttpHeaders.authorizationHeader: "Bearer $token"
     };
 
     var response = await http.patch(url, body: _body, headers: header);
