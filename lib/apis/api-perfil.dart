@@ -6,8 +6,9 @@ import 'dart:convert';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
-class PerfilApi{
-  static Future <Perfil> perfil(String nickname, String name, String lastname, String datanascimento) async{
+class PerfilApi {
+  static Future<Perfil> perfil(String nickname, String name, String lastname,
+      String datanascimento) async {
     var perfil;
     final prefs = await SharedPreferences.getInstance();
     String email = prefs.getString('emailPrefs');
@@ -22,18 +23,23 @@ class PerfilApi{
     //transformando o map em json
     var _body = json.encode(params);
     print("Json Enviado: $_body");
+    print("E-mail: $email");
+    print("Token: $token");
 
     var url = "https://w4s.herokuapp.com/v1/create/user/createprofile?e=$email";
-    var header = {"Content-Type": "application/json; charset=utf-8", HttpHeaders.authorizationHeader: "$token"};
+    var header = {
+      "Content-Type": "application/json; charset=utf-8",
+      HttpHeaders.authorizationHeader: "$token"
+    };
 
     var response = await http.patch(url, body: _body, headers: header);
     print('Response status: ${response.statusCode}');
 
     Map mapResponse = json.decode(response.body);
 
-    if(response.statusCode == 200){
+    if (response.statusCode == 200) {
       perfil = Perfil.fromJson(mapResponse);
-    }else{
+    } else {
       perfil = null;
     }
     return perfil;
