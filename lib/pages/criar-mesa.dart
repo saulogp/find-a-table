@@ -278,7 +278,7 @@ class _CriarMesaState extends State<CriarMesa> {
 
       print("$name, $sistema, $maxofparticipants, $description");
 
-      bool estaCriada = await MesaAPI.createTable(
+      var estaCriada = await MesaAPI.createTable(
           name, description, maxofparticipants, sistema);
 
       if (estaCriada != false) {
