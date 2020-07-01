@@ -4,6 +4,7 @@
 // import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 import 'package:finda_a_table/apis/api-mesa.dart';
+import 'package:finda_a_table/pages/home.dart';
 import 'package:finda_a_table/reciclagem/label.dart';
 import 'package:flutter/material.dart';
 
@@ -310,6 +311,26 @@ class _CriarMesaState extends State<CriarMesa> {
 
       if (estaCriada != false) {
         print("Mesa criada");
+        return showDialog(
+            context: context,
+            builder: (context) {
+              return AlertDialog(
+                title: Text("Criar mesa"),
+                content: Text("Mesa Criada!"),
+                actions: <Widget>[
+                  FlatButton(
+                      child: Text("OK"),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Home(),
+                          ),
+                        );
+                      }),
+                ],
+              );
+            });
         //foi
         /*Navigator.push(
           context,
