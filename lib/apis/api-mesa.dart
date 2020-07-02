@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:finda_a_table/class/mesa.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -47,34 +48,54 @@ class MesaAPI {
     return status;
   }
 
-  //Delete Table ----------------------------------------------------------
-
-  // Future<Response> deleteTable(String id) async {
-  // final http.Response response = await http.delete(
-  //   'https://.../$id',
-  //   headers: <String, String>{
-  //     'Content-Type': 'application/json; charset=UTF-8',
-  //   },
-  // );
-
-  // return response;
-  // }
-
   //Get All Table
   //https://flutter.dev/docs/cookbook/networking/fetch-data
   //https://www.youtube.com/watch?v=syCUTugjELQ&list=PLCIwljzzdvqnNYgoioaRS9JBTG7o9O1Vg&index=5
-  // Future<List<Table>> getAllTable(String email) async {
+  static Future<List<TableClass>> getAllTable() async {
+    final prefs = await SharedPreferences.getInstance();
+    String token = prefs.getString('successPrefs');
+    String email = prefs.getString('emailPrefs');
 
-  //   final response = await http.get('http://localhost:8080/v2/searchall/table?e=$email');
+    var header = {
+      "Content-Type": "application/json; charset=utf-8",
+      HttpHeaders.authorizationHeader: "Bearer $token"
+    };
+    var url = 'https://w4s.herokuapp.com/v2/searchall/table?e=$email';
 
-  //   List listaResponse = json.decode(response.body);
+    final response = await http.get(url, headers: header);
+    print("Response: $response");
 
-  //   final mesa = List<Table>();
+    final mesas = List<TableClass>();
 
-  //   for(Map map in listaResponse){
-  //     Table t = Table.fromJson(map);
-  //     mesa.add(t);
-  //   }
-  //   return mesa;
-  // }
+    print(mesas.toString());
+
+    if (response.statusCode == 200) {
+      print("Success");
+
+      Map<String, dynamic> mapResponse = json.decode(response.body);
+      List<dynamic> listaResponse = mapResponse["name"];
+
+      for (Map map in listaResponse) {
+        TableClass t = TableClass.fromJson(map);
+        mesas.add(t);
+      }
+    } else {
+      print("Deu ruim!");
+    }
+
+    return mesas;
+  }
 }
+
+//Delete Table ----------------------------------------------------------
+
+// Future<Response> deleteTable(String id) async {
+// final http.Response response = await http.delete(
+//   'https://.../$id',
+//   headers: <String, String>{
+//     'Content-Type': 'application/json; charset=UTF-8',
+//   },
+// );
+
+// return response;
+// }
