@@ -118,7 +118,7 @@ class _CriarMesaState extends State<CriarMesa> {
               labelComum("Link"),
               TextFormField(
                 keyboardType: TextInputType.text,
-                validator: _validarDesc,
+                validator: _validarLink,
                 controller: _linkController,
                 decoration: InputDecoration(
                     hintText: "www.discord.com",
@@ -233,6 +233,17 @@ class _CriarMesaState extends State<CriarMesa> {
       return "Informe o N° de Participantes";
     } else if (regExp.hasMatch(value)) {
       return "N° de Participantes Inválido";
+    }
+    return null;
+  }
+
+  String _validarLink(String value) {
+    String pattern = r'^((http)|(https)|(ftp)):\/\/([\- \w]+\.)+\w{2,3}(\/ [%\-\w]+(\.\w{2,})?)*$';
+    RegExp regExp = RegExp(pattern);
+    if (value.isEmpty) {
+      return "Informe a Descrição";
+    } else if (regExp.hasMatch(value)) {
+      return "Descrição Inválida";
     }
     return null;
   }
