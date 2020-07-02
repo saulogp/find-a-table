@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-Widget cardMesa(String name) {
+Widget cardMesa(String name, String img) {
   return GestureDetector(
     onTap: () {
       // Navigator.push(
@@ -18,7 +18,7 @@ Widget cardMesa(String name) {
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             Image.asset(
-              "assets/images/paisagem.jpg",
+              img,
               fit: BoxFit.fitWidth,
             ),
             SizedBox(

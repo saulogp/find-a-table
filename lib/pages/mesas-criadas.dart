@@ -13,6 +13,16 @@ class MesasCriadas extends StatefulWidget {
 class _MesasCriadasState extends State<MesasCriadas> {
   var mesa = MesaAPI.getAllTable();
 
+  List nomes = [
+    'Fogo no parquinho',
+    'Frodo recebe outro anel',
+    'Guerra dos Elfos'
+  ];
+  List images = [
+    'assets/images/mesa1.png',
+    'assets/images/mesa2.png',
+    'assets/images/mesa3.png'
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,9 +36,9 @@ class _MesasCriadasState extends State<MesasCriadas> {
       ),
       body: ListView.builder(
           padding: EdgeInsets.all(10),
-          itemCount: 4,
+          itemCount: 3,
           itemBuilder: (context, index) {
-            return cardMesa("Fogo no parquinho $index");
+            return cardMesa(nomes[index], images[index]);
           }),
       floatingActionButton: FloatingActionButton(
         onPressed: () {

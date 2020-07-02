@@ -118,7 +118,7 @@ class _CriarMesaState extends State<CriarMesa> {
               labelComum("Link"),
               TextFormField(
                 keyboardType: TextInputType.text,
-                validator: _validarDesc,
+                validator: _validarLink,
                 controller: _linkController,
                 decoration: InputDecoration(
                     hintText: "www.discord.com",
@@ -222,6 +222,18 @@ class _CriarMesaState extends State<CriarMesa> {
       return "Informe o Sistema";
     } else if (regExp.hasMatch(value)) {
       return "Sistema Inválido";
+    }
+    return null;
+  }
+
+  String _validarLink(String value) {
+    String pattern =
+        r'^((http)|(https)|(ftp)):\/\/([\- \w]+\.)+\w{2,3}(\/ [%\-\w]+(\.\w{2,})?)*$';
+    RegExp regExp = RegExp(pattern);
+    if (value.isEmpty) {
+      return "Informe um link";
+    } else if (regExp.hasMatch(value)) {
+      return "Link Inválida";
     }
     return null;
   }

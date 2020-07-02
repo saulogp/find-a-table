@@ -51,7 +51,7 @@ class MesaAPI {
   //Get All Table
   //https://flutter.dev/docs/cookbook/networking/fetch-data
   //https://www.youtube.com/watch?v=syCUTugjELQ&list=PLCIwljzzdvqnNYgoioaRS9JBTG7o9O1Vg&index=5
-  static Future<List<TableClass>> getAllTable() async {
+  static Future<List<Success>> getAllTable() async {
     final prefs = await SharedPreferences.getInstance();
     String token = prefs.getString('successPrefs');
     String email = prefs.getString('emailPrefs');
@@ -65,19 +65,19 @@ class MesaAPI {
     final response = await http.get(url, headers: header);
     print("Response: $response");
 
-    final mesas = List<TableClass>();
-
-    print(mesas.toString());
-
+    final mesas = List<Success>();
+    print(email);
+    print(token);
     if (response.statusCode == 200) {
       print("Success");
-
       Map<String, dynamic> mapResponse = json.decode(response.body);
-      List<dynamic> listaResponse = mapResponse["name"];
+      List<dynamic> listaResponse = mapResponse["success"];
+      print("Lista: " + listaResponse.toString());
 
       for (Map map in listaResponse) {
-        TableClass t = TableClass.fromJson(map);
+        Success t = Success.fromJson(map);
         mesas.add(t);
+        print(t);
       }
     } else {
       print("Deu ruim!");
