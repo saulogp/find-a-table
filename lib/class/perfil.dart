@@ -1,4 +1,3 @@
-
 class Perfil {
   String nickname;
   String name;

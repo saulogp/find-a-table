@@ -296,6 +296,8 @@ class _PerfilState extends State<Perfil> {
         final prefs = await SharedPreferences.getInstance();
         prefs.setString('nicknamePrefs', nickname);
 
+        print(nickname);
+
         print("$perfil");
         return showDialog(
             context: context,
