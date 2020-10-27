@@ -1,7 +1,8 @@
 class Usuario {
   String success;
+  bool emailCheck, existe;
 
-  Usuario({this.success});
+  Usuario({this.success, this.emailCheck, this.existe});
 
   Usuario.fromJson(Map<String, dynamic> json) {
     success = json['success'];

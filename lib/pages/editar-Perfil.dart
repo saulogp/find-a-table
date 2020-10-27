@@ -1,3 +1,4 @@
+import 'package:finda_a_table/pages/login.dart';
 import 'package:finda_a_table/pages/perfil.dart';
 import 'package:flutter/material.dart';
 
@@ -90,7 +91,14 @@ class _EditarPerfilState extends State<EditarPerfil> {
                   ),
                   child: SizedBox.expand(
                     child: FlatButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => LoginPage(),
+                          ),
+                        );
+                      },
                       child: Text(
                         "Sair",
                         style: TextStyle(

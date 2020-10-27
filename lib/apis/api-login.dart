@@ -24,6 +24,10 @@ class LoginAPI {
     
     if(response.statusCode == 200){
       usuario = Usuario.fromJson(mapResponse);
+    }else if(response.statusCode == 400){
+      usuario = Usuario(emailCheck: false);
+    }else if(response.statusCode == 401){
+      usuario = Usuario(existe: false);
     }else{
       usuario = null;
     }

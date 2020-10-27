@@ -1,6 +1,12 @@
+import 'dart:convert';
+
+import 'package:finda_a_table/apis/api-mesa.dart';
+import 'package:finda_a_table/class/mesa.dart';
 import 'package:finda_a_table/pages/criar-mesa.dart';
-import 'package:finda_a_table/pages/detalhes-mesa.dart';
+//import 'package:finda_a_table/pages/detalhes-mesa.dart';
+import 'package:finda_a_table/reciclagem/cardMesa.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
 
 class MesasCriadas extends StatefulWidget {
   @override
@@ -8,6 +14,27 @@ class MesasCriadas extends StatefulWidget {
 }
 
 class _MesasCriadasState extends State<MesasCriadas> {
+  var mesa = new List<Success>();
+
+  // _getMesas() {
+  //   MesaAPI.getAllTable().then((response) {
+  //     setState(() {
+  //       Iterable list = json.decode(response.body);
+  //       mesa = list.map((model) => Success.fromJson(model)).toList();
+  //     });
+  //   });
+  // }
+
+  // List nomes = [
+  //   'Fogo no parquinho',
+  //   'Frodo recebe outro anel',
+  //   'Guerra dos Elfos'
+  // ];
+  // List images = [
+  //   'assets/images/mesa1.png',
+  //   'assets/images/mesa2.png',
+  //   'assets/images/mesa3.png'
+  // ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,125 +46,12 @@ class _MesasCriadasState extends State<MesasCriadas> {
         backgroundColor: Colors.white,
         centerTitle: true,
       ),
-      body: Container(
-        padding: EdgeInsets.all(10.0),
-        child: ListView(
-          children: <Widget>[
-            Column(
-              children: <Widget>[
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => DetalhesMesa(),
-                      ),
-                    );
-                  },
-                  child: Card(
-                    color: Colors.white70,
-                    child: Container(
-                      padding: EdgeInsets.all(10.0),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: <Widget>[
-                          Image.asset(
-                            "assets/images/mesa1.png",
-                            fit: BoxFit.fitWidth,
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Text(
-                            "Nome_Da_Mesa",
-                            style: TextStyle(
-                              fontWeight: FontWeight.w400,
-                              fontSize: 15,
-                              color: Color(0xFF002B32),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => DetalhesMesa(),
-                      ),
-                    );
-                  },
-                  child: Card(
-                    color: Colors.white70,
-                    child: Container(
-                      padding: EdgeInsets.all(10.0),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: <Widget>[
-                          Image.asset(
-                            "assets/images/mesa2.png",
-                            fit: BoxFit.fitWidth,
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Text(
-                            "Nome_Da_Mesa",
-                            style: TextStyle(
-                              fontWeight: FontWeight.w400,
-                              fontSize: 15,
-                              color: Color(0xFF002B32),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => DetalhesMesa(),
-                      ),
-                    );
-                  },
-                  child: Card(
-                    color: Colors.white70,
-                    child: Container(
-                      padding: EdgeInsets.all(10.0),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: <Widget>[
-                          Image.asset(
-                            "assets/images/mesa3.png",
-                            fit: BoxFit.fitWidth,
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Text(
-                            "Nome_Da_Mesa",
-                            style: TextStyle(
-                              fontWeight: FontWeight.w400,
-                              fontSize: 15,
-                              color: Color(0xFF002B32),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                )
-              ],
-            )
-          ],
-        ),
-      ),
+      body: ListView.builder(
+          padding: EdgeInsets.all(10),
+          itemCount: mesa.length,
+          itemBuilder: (context, index) {
+            return cardMesa(mesa[index].name);
+          }),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.push(
@@ -151,5 +65,10 @@ class _MesasCriadasState extends State<MesasCriadas> {
         backgroundColor: Color(0xFF002B32),
       ),
     );
+
+    // Future List<Success> _getMesa() async{
+    //   var mesa = await MesaAPI.getAllTable();
+    //   return mesa;
+    // }
   }
 }

@@ -12,5 +12,6 @@ void main() {
       Locale("pt"),
     ],
     home: Splash(),
+    debugShowCheckedModeBanner: false,
   ));
 }
