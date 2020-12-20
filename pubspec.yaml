@@ -19,10 +19,19 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
+  flare_flutter: ^1.0.2
+  image_picker: ^0.6.7+2
+  carousel_pro: ^1.0.0
+  http: ^0.12.1
+  datetime_picker_formfield: ^1.0.0
+  shared_preferences: ^0.5.7+3
+  dio: ^3.0.9
 
 dev_dependencies:
   flutter_test:
@@ -42,10 +51,25 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
+   - assets/images/paisagem.jpg
    - assets/images/logo-nome.png
    - assets/images/esqueceu_a_senha.png
    - assets/images/LogoFaT.png
    - assets/images/logo-h.png
+   - assets/images/person.png
+   - assets/images/chululu.png
+   - assets/flare/logoanimada.flr
+   - assets/images/Cyberpunk.png
+   - assets/images/Investigação.png
+   - assets/images/Medieval.png
+   - assets/images/SW.png
+   - assets/images/Terror.png
+   - assets/images/Vampi.png
+   - assets/images/Zumbi.png
+   - assets/images/mesa1.png
+   - assets/images/mesa2.png
+   - assets/images/mesa3.png
+
   #  - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
