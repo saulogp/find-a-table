@@ -190,23 +190,21 @@ class _LoginPageState extends State<LoginPage> {
       if (usuario != null) {
         if (usuario.emailCheck == false) {
           return showDialog(
-            context: context,
-            builder: (context){
-              return AlertDialog(
-                title: Text("Login"),
-                content: Text("Ative sua conta pelo link enviado no email !"),
-                actions: <Widget>[
-                  FlatButton(
-                      child: Text("OK"),
-                      onPressed: (){
-                        Navigator.pop(context);
-                      }
-                  ),
-                ],
-              );
-            }
-          );
-        }else if (usuario.existe == false) {
+              context: context,
+              builder: (context) {
+                return AlertDialog(
+                  title: Text("Login"),
+                  content: Text("Ative sua conta pelo link enviado no email !"),
+                  actions: <Widget>[
+                    FlatButton(
+                        child: Text("OK"),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        }),
+                  ],
+                );
+              });
+        } else if (usuario.existe == false) {
           return showDialog(
               context: context,
               builder: (context) {
