@@ -10,6 +10,7 @@
 ## Preview 
 
 ![teste](https://user-images.githubusercontent.com/38708863/85060592-e0460380-b17b-11ea-9f6f-1bb5b128bb1b.gif)
+![foto de perfil](https://user-images.githubusercontent.com/38708863/108288777-fa513f00-716b-11eb-9424-da16f045e589.jpeg)
 
 
 ## Getting started
